@@ -26,9 +26,30 @@ with dpg.window(tag="Top Window",width=1200, height=30, pos=(0,0)):
 
 with dpg.window(tag="First Window",width=300, height=400, pos=(0,100), label='Control'):
     dpg.bind_font(default_font)
-    dpg.add_button(width=100,height=50,label="Start", pos=(20,60))
-    dpg.add_button(width=100,height=50,label="Stop", pos=(140,60))
-    dpg.add_text("Timer: ")
+    with dpg.group(horizontal=True):
+        dpg.add_button(width=90,height=50,label="Start" )
+        dpg.add_button(width=90,height=50,label="Stop")
+
+    with dpg.child_window(tag='Velocity', width=200, height=50,menubar=True, no_scrollbar=True):
+        with dpg.menu_bar():
+            dpg.add_menu(label="Velocity", enabled=False)
+        dpg.add_text(default_value="m/s 0.0")
+
+    with dpg.child_window(tag='Timer', width=200, height=50,menubar=True, no_scrollbar=True):
+        with dpg.menu_bar():
+            dpg.add_menu(label="Timer", enabled=False)
+        dpg.add_text(default_value="Min 0:0")
+
+    with dpg.child_window(tag='Bandwidth', width=200, height=50,menubar=True, no_scrollbar=True):
+        with dpg.menu_bar():
+            dpg.add_menu(label="Bandwith Used", enabled=False)
+        dpg.add_text(default_value="k/b 0.0")
+
+    with dpg.child_window(tag='Totol Power', width=200, height=50,menubar=True, no_scrollbar=True):
+        with dpg.menu_bar():
+            dpg.add_menu(label="Total Power Used", enabled=False)
+        dpg.add_text(default_value="W/h 0.0")
+
 
 
 
@@ -45,20 +66,58 @@ with dpg.window(tag='Second Window', width=500, height=400, pos=(300,100), label
 
 with dpg.window(tag='Third Window', width=400, height=400, pos=(800,100),label='Telemetry'):
     dpg.bind_font(default_font)
-    with dpg.plot(tag='Line Chart', height=380, width=400):
-    # optionally create legend
-        dpg.add_plot_legend()
+    dpg.add_3d_slider(label="3D Slider", )
+    # with dpg.plot(tag='Line Chart', height=380, width=400):
+    # # optionally create legend
+    #     dpg.add_plot_legend()
 
-        # REQUIRED: create x and y axes
-        dpg.add_plot_axis(dpg.mvXAxis, label="x")
-        dpg.add_plot_axis(dpg.mvYAxis, label="y", tag="y_axis")
+    #     # REQUIRED: create x and y axes
+    #     dpg.add_plot_axis(dpg.mvXAxis, label="x")
+    #     dpg.add_plot_axis(dpg.mvYAxis, label="y", tag="y_axis")
 
-        # series belong to a y axis
-        dpg.add_line_series(sindatax, sindatay, label="0.5 + 0.5 * sin(x)", parent="y_axis")
+    #     # series belong to a y axis
+    #     dpg.add_line_series(sindatax, sindatay, label="0.5 + 0.5 * sin(x)", parent="y_axis")
 
-with dpg.window(tag='Bottom Window', width=1200, height=400, pos=(0,500),label='Surface Operations'):
+with dpg.window(tag='Bottom Window', width=1200, height=300, pos=(0,500),label='Surface Operations'):
     dpg.bind_font(default_font)
-    dpg.add_listbox(items=["Start Up", "Calibration", "Pathing", "Excavation", "Deposition"], width=200, num_items=6)
+    with dpg.group(horizontal=True):
+        dpg.add_listbox(items=["Start Up", "Calibration", "Pathing", "Excavation", "Deposition"], width=200, num_items=6)
+        with dpg.child_window(tag='Action Responses', width=200, height=250,menubar=True):
+            with dpg.menu_bar():
+                dpg.add_menu(label="Action Responses", enabled=False)
+            dpg.add_text(default_value="Start up")
+
+        with dpg.child_window(tag='Manual Input', width=200, height=250,menubar=True):
+            with dpg.menu_bar():
+                dpg.add_menu(label="Manual Input", enabled=False)
+            # dpg.add_text(default_value="Start up")
+            dpg.add_input_text(hint="Enter Value")
+
+
+
+        with dpg.subplots(1, 2, label="Bandwidth & Power", width=-1, height=-1, row_ratios=[1.0, 1.0], column_ratios=[1.0, 1.0]) as subplot_id:
+
+            with dpg.plot(no_title=True):
+                dpg.add_plot_axis(dpg.mvXAxis, label="Kb", no_tick_labels=True)
+                with dpg.plot_axis(dpg.mvYAxis, label="Time", no_tick_labels=True):
+                    dpg.add_line_series(sindatax, sindatay, label="0.5 + 0.5 * sin(x)")
+            with dpg.plot(no_title=True):
+                dpg.add_plot_axis(dpg.mvXAxis, label="W/h", no_tick_labels=True)
+                with dpg.plot_axis(dpg.mvYAxis, label="Time", no_tick_labels=True):
+                    dpg.add_line_series(sindatax, sindatay, label="0.5 + 0.5 * sin(x)")
+        # with dpg.group():
+        #     with dpg.plot(tag='Line Chart', height=200, width=400):
+        #     # optionally create legend
+        #         dpg.add_plot_legend()
+
+        #         # REQUIRED: create x and y axes
+        #         dpg.add_plot_axis(dpg.mvXAxis)
+        #         dpg.add_plot_axis(dpg.mvYAxis, tag="y_axis")
+
+        #         # series belong to a y axis
+        #         dpg.add_line_series(sindatax, sindatay, label="0.5 + 0.5 * sin(x)", parent="y_axis")
+            
+
 
 
 
@@ -70,6 +129,7 @@ with dpg.window(tag='Bottom Window', width=1200, height=400, pos=(0,500),label='
 dpg.create_viewport(title='Rover Dashboard', width=1200, height=800)
 dpg.setup_dearpygui()
 dpg.show_font_manager()
+dpg.show_item_registry()
 dpg.show_viewport()
 
 
