@@ -90,7 +90,6 @@ with dpg.window(tag='Bottom Window', width=1200, height=300, pos=(0,500),label='
         with dpg.child_window(tag='Manual Input', width=200, height=250,menubar=True):
             with dpg.menu_bar():
                 dpg.add_menu(label="Manual Input", enabled=False)
-            # dpg.add_text(default_value="Start up")
             dpg.add_input_text(hint="Enter Value")
 
 
@@ -105,26 +104,8 @@ with dpg.window(tag='Bottom Window', width=1200, height=300, pos=(0,500),label='
                 dpg.add_plot_axis(dpg.mvXAxis, label="W/h", no_tick_labels=True)
                 with dpg.plot_axis(dpg.mvYAxis, label="Time", no_tick_labels=True):
                     dpg.add_line_series(sindatax, sindatay, label="0.5 + 0.5 * sin(x)")
-        # with dpg.group():
-        #     with dpg.plot(tag='Line Chart', height=200, width=400):
-        #     # optionally create legend
-        #         dpg.add_plot_legend()
 
-        #         # REQUIRED: create x and y axes
-        #         dpg.add_plot_axis(dpg.mvXAxis)
-        #         dpg.add_plot_axis(dpg.mvYAxis, tag="y_axis")
-
-        #         # series belong to a y axis
-        #         dpg.add_line_series(sindatax, sindatay, label="0.5 + 0.5 * sin(x)", parent="y_axis")
             
-
-
-
-
-
-
-
-
 
 dpg.create_viewport(title='Rover Dashboard', width=1200, height=800)
 dpg.setup_dearpygui()

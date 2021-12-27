@@ -2753,7 +2753,7 @@ def show_demo():
                 dpg.configure_item(b3, user_data=dpg.last_item())
 
 dpg.create_context()
-dpg.create_viewport(title='Rover Dashboard', width=1200, height=800)
+dpg.create_viewport(title='DEMO', width=1200, height=800)
 dpg.setup_dearpygui()
 dpg.show_viewport()
 s = show_demo()
