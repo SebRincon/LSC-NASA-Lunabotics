@@ -4,6 +4,10 @@ from math import sin
 
 dpg.create_context()
 
+image = "savedImage.png"
+width, height, channels, data = dpg.load_image(image)
+
+
 # creating data
 sindatax = []
 sindatay = []
@@ -54,15 +58,6 @@ with dpg.window(tag="First Window",width=300, height=400, pos=(0,100), label='Co
 
 
 
-with dpg.window(tag='Second Window', width=500, height=400, pos=(300,100), label='Camera Feed'):
-    dpg.bind_font(default_font)
-    width, height, channels, data = dpg.load_image("example.png")
-
-    with dpg.texture_registry(show=False):
-        dpg.add_static_texture(width, height, data, tag="texture_tag")
-
-    dpg.add_image("texture_tag",width=490, height=350)
-
 
 with dpg.window(tag='Third Window', width=400, height=400, pos=(800,100),label='Telemetry'):
     dpg.bind_font(default_font)
@@ -106,12 +101,22 @@ with dpg.window(tag='Bottom Window', width=1200, height=300, pos=(0,500),label='
                     dpg.add_line_series(sindatax, sindatay, label="0.5 + 0.5 * sin(x)")
 
             
+with dpg.window(tag='Second Window', width=500, height=400, pos=(300,100), label='Camera Feed'):
+        dpg.bind_font(default_font)
+
+        with dpg.texture_registry(show=False):
+            dpg.add_dynamic_texture(width, height, data, tag="texture_tag")
+
+        dpg.add_image("texture_tag",width=490, height=350)
+
+            
 
 dpg.create_viewport(title='Rover Dashboard', width=1200, height=800)
 dpg.setup_dearpygui()
 dpg.show_font_manager()
 dpg.show_item_registry()
 dpg.show_viewport()
+# dpg.start_dearpygui()
 
 
 # below replaces, start_dearpygui()
@@ -119,6 +124,10 @@ while dpg.is_dearpygui_running():
     # insert here any code you would like to run in the render loop
     # you can manually stop by using stop_dearpygui()
     # print("this will run every frame")
+    image = "savedImage.png"
+    width, height, channels, data = dpg.load_image(image)
+    
+    dpg.set_value("texture_tag", data)
 
     dpg.render_dearpygui_frame()
 
