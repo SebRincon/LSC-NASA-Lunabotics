@@ -4,8 +4,8 @@ from math import sin
 
 dpg.create_context()
 
-image = "savedImage.png"
-width, height, channels, data = dpg.load_image(image)
+# image = "savedImage.png"
+# width, height, channels, data = dpg.load_image(image)
 
 
 # creating data
@@ -104,10 +104,10 @@ with dpg.window(tag='Bottom Window', width=1200, height=300, pos=(0,500),label='
 with dpg.window(tag='Second Window', width=500, height=400, pos=(300,100), label='Camera Feed'):
         dpg.bind_font(default_font)
 
-        with dpg.texture_registry(show=False):
-            dpg.add_dynamic_texture(width, height, data, tag="texture_tag")
+        # with dpg.texture_registry(show=False):
+        #     dpg.add_dynamic_texture(width, height, data, tag="texture_tag")
 
-        dpg.add_image("texture_tag",width=490, height=350)
+        # dpg.add_image("texture_tag",width=490, height=350)
 
             
 
@@ -124,10 +124,10 @@ while dpg.is_dearpygui_running():
     # insert here any code you would like to run in the render loop
     # you can manually stop by using stop_dearpygui()
     # print("this will run every frame")
-    image = "savedImage.png"
-    width, height, channels, data = dpg.load_image(image)
+    # image = "savedImage.png"
+    # width, height, channels, data = dpg.load_image(image)
     
-    dpg.set_value("texture_tag", data)
+    # dpg.set_value("texture_tag", data)
 
     dpg.render_dearpygui_frame()
 

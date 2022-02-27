@@ -2,7 +2,9 @@
 import socket
 
 # Variables
-ip_address = '127.0.0.1'
+#ip_address = '127.0.0.1'
+#ip_address = '192.168.1.173'
+ip_address = '10.3.141.1'
 ip_port = 10000
 
 txt = 'utf-8'
