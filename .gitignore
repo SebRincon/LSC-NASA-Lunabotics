@@ -1,3 +1,6 @@
 .vscode
 .DS_Store
 '.~'
+~./vim/undodir/%Users%sebastian%GoogleDrive%Dev%RMC%RPI_CC%sClient.py
+RPI_CC/.textClient.py.swp
+.gitignore
