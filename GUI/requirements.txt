@@ -1,1 +1,5 @@
 dearpygui
+rplidar-roboticia
+requests
+fastapi
+uvicorn
