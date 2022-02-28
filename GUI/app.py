@@ -7,6 +7,7 @@ import time
 # Context Boilerplate
 dpg.create_context()
 ctr = controlCallbacks.Control() 
+connected = False
 
 #Setting a Default Font & Font Size
 with dpg.font_registry():
@@ -32,7 +33,7 @@ with dpg.window(tag="Primary Window"):
             dpg.add_input_text(default_value="10001", uppercase=True, width=-1, tag='serverPort')
 
         with dpg.group(horizontal=True):
-            dpg.add_button(label="OK", width=75, callback=ctr.setup)
+            dpg.add_button(label="OK", width=75, callback=ctr.simpleSetup)
             dpg.add_button(label="Cancel", width=75, callback=lambda: dpg.configure_item("modal_id", show=False))
 
     with dpg.child_window(tag="Top Window",width=-1, height=70, pos=(0,0)):
@@ -44,6 +45,7 @@ with dpg.window(tag="Primary Window"):
             dpg.add_progress_bar( show=True, overlay='Rover Temp',width=200,height=30,default_value=0.5,pos=(690,30))
 
             dpg.add_button(label="Open Setup", callback=lambda: dpg.configure_item("modal_id", show=True))
+            dpg.add_text('Not Connected', tag='connection')
 
 
     with dpg.child_window(tag='control', width=205, height=450, pos=(0,100), label='Control'):
@@ -73,18 +75,18 @@ with dpg.window(tag="Primary Window"):
                 dpg.add_text(default_value="W/h 0.0")
 
             with dpg.group(horizontal=True):
-                dpg.add_button(callback=ctr.setVelocity, width=60,height=40,label="FL",user_data="FL")
-                dpg.add_button(callback=ctr.setVelocity, width=60,height=40,label="Forward",user_data="F")
-                dpg.add_button(callback=ctr.setVelocity, width=60,height=40,label="FR",user_data="FR")
+                dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="FL",user_data="FL")
+                dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="Forward",user_data="F")
+                dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="FR",user_data="FR")
             with dpg.group(horizontal=True):
-                dpg.add_button(callback=ctr.setVelocity, width=60,height=40,label="Left",user_data="L")
-                dpg.add_button(callback=ctr.setVelocity, width=60,height=40,label="Stop",user_data="S")
-                dpg.add_button(callback=ctr.setVelocity, width=60,height=40,label="Right",user_data="R")
+                dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="Left",user_data="L")
+                dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="Stop",user_data="S")
+                dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="Right",user_data="R")
             with dpg.group(horizontal=True):
-                dpg.add_button(callback=ctr.setVelocity, width=60,height=40,label="BL",user_data="BL")
-                dpg.add_button(callback=ctr.setVelocity, width=60,height=40,label="Back",user_data="B")
-                dpg.add_button(callback=ctr.setVelocity, width=60,height=40,label="BR",user_data="BR")
-        dpg.add_slider_int(label="Speed", default_value=0, max_value=100,tag="speed")
+                dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="BL",user_data="BL")
+                dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="Back",user_data="B")
+                dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="BR",user_data="BR")
+        dpg.add_slider_int(label="Speed", default_value=0, max_value=30,tag="speed")
 
     with dpg.child_window(tag='Bottom Window', width=-1, height=300, pos=(0,600),label='Surface Operations'):
         dpg.bind_font(default_font)
@@ -123,6 +125,14 @@ dpg.setup_dearpygui()
 dpg.set_primary_window("Primary Window", True)
 
 dpg.show_viewport()
-dpg.start_dearpygui()
+# dpg.start_dearpygui()
+while dpg.is_dearpygui_running():
+    conState  = dpg.get_value('connection')
+    # if conState == 'Connected':
+    #     update = ctr.simpleStatus(dpg.get_value('speed'))
+    #     statusFeed = dpg.get_value('status')
+    #     dpg.set_value('status', f'{update}\n{statusFeed}')
+    #     time.sleep(2)
+    dpg.render_dearpygui_frame()
 
 dpg.destroy_context()
