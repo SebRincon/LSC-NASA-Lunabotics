@@ -1,3 +1,5 @@
+
+
 import dearpygui.dearpygui as dpg
 import controlCallbacks 
 import socket
@@ -8,15 +10,30 @@ import time
 dpg.create_context()
 ctr = controlCallbacks.Control() 
 connected = False
+texture_data = []
+
+
+
+for i in range(0, 76800):
+    texture_data.append(100 / 255)
+    texture_data.append(100 / 255)
+    texture_data.append(100 / 255)
+    texture_data.append(255 / 255)
+
 
 #Setting a Default Font & Font Size
-with dpg.font_registry():
+with dpg.font_registry(show=False):
     # first argument ids the path to the .ttf or .otf file
     # default_font = dpg.add_font("Fonts/Noto.otf", 20)
     default_font = dpg.add_font("Fonts/Roboto.ttf", 15)
 
 
-with dpg.window(tag="Primary Window"):
+
+with dpg.texture_registry(show=False):
+    dpg.add_dynamic_texture(320, 240, texture_data, tag="texture_tag")
+
+
+with dpg.window(tag="Primary Window", width=-1, height=-1):
     dpg.bind_font(default_font)
 
 
@@ -76,18 +93,25 @@ with dpg.window(tag="Primary Window"):
 
             with dpg.group(horizontal=True):
                 dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="FL",user_data="FL")
-                dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="Forward",user_data="F")
+                dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="Forward",user_data="forward")
                 dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="FR",user_data="FR")
             with dpg.group(horizontal=True):
                 dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="Left",user_data="L")
-                dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="Stop",user_data="S")
+                dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="Stop",user_data="stop")
                 dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="Right",user_data="R")
             with dpg.group(horizontal=True):
                 dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="BL",user_data="BL")
-                dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="Back",user_data="B")
+                dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="Back",user_data="backward")
                 dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="BR",user_data="BR")
         dpg.add_slider_int(label="Speed", default_value=0, max_value=30,tag="speed")
 
+    with dpg.child_window(tag='lidarView', width=500, height=450, pos=(205,100), label='Camera Feed'):
+        dpg.bind_font(default_font)
+        dpg.add_image("texture_tag", pos=(100,100))
+
+
+
+        # dpg.add_image("texture_tag",width=490, height=350)
     with dpg.child_window(tag='Bottom Window', width=-1, height=300, pos=(0,600),label='Surface Operations'):
         dpg.bind_font(default_font)
         with dpg.group(horizontal=True):
@@ -129,6 +153,7 @@ dpg.show_viewport()
 while dpg.is_dearpygui_running():
     conState  = dpg.get_value('connection')
     # if conState == 'Connected':
+        # ctr.getLidarUpdates()
     #     update = ctr.simpleStatus(dpg.get_value('speed'))
     #     statusFeed = dpg.get_value('status')
     #     dpg.set_value('status', f'{update}\n{statusFeed}')

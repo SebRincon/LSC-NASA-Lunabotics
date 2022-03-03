@@ -61,6 +61,14 @@ class Control():
 
         dpg.set_value('status', f"Speed Set: {dataFromServer.decode()}\n{messageFeed}")
 
+    def sendDirections(self,sender, app_data, user_data):
+        messageFeed = dpg.get_value('status')
+
+        self.clientSocket.send(user_data.encode())
+        # dataFromServer = self.clientSocket.recv(1024)
+
+        dpg.set_value('status', f"Direction: {user_data}\n{messageFeed}")
+
     def getUpdate(self):
         socks = [self.sock]
         readySocks, _, _ = select.select(socks, [], [], 5)
@@ -78,3 +86,12 @@ class Control():
             # decode the received text message
             message = encodedMessage.decode('utf-8')
 
+    def getLidarUpdates(self):
+        dataFromServer = self.clientSocket.recv(1024)
+        messageFeed = dpg.get_value('status')
+        print('***************')
+        print(dataFromServer.decode('utf-8'))
+        print('***************')
+        self.clientSocket.send(dataFromServer)
+
+        dpg.set_value('status', f"{dataFromServer.decode()} \n{messageFeed[0:300]}")
