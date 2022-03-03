@@ -41,7 +41,6 @@ class Control():
 
         # self.clientSocket.connect((self.address, self.port))
         # Send data to server
-        data = "Hello Server!"
         self.clientSocket.send(repr(message).encode())
 
         # Receive data from server
@@ -95,3 +94,49 @@ class Control():
         self.clientSocket.send(dataFromServer)
 
         dpg.set_value('status', f"{dataFromServer.decode()} \n{messageFeed[0:300]}")
+
+class ControlGui():
+    
+    def createControlGUI(ctr:Control, default_font):
+        
+        with dpg.child_window(tag='control', width=205, height=450, pos=(0,100), label='Control'):
+            dpg.bind_font(default_font)
+
+            with dpg.group(horizontal=False):
+                with dpg.group(horizontal=True):
+                    dpg.add_button(width=90,height=40,label="Start")
+                    dpg.add_button(width=90,height=40,label="Start")
+                
+                with dpg.child_window(tag='Velocity', width=200, height=50,menubar=True, no_scrollbar=True):
+                    with dpg.menu_bar():
+                        dpg.add_menu(label="Velocity", enabled=False)
+                    dpg.add_text(default_value="m/s 0.0")
+
+                with dpg.child_window(tag='Timer', width=200, height=50,menubar=True, no_scrollbar=True):
+                    with dpg.menu_bar():
+                        dpg.add_menu(label="Timer", enabled=False)
+                    dpg.add_text(default_value="Min 0:0")
+
+                with dpg.child_window(tag='Bandwidth', width=200, height=50,menubar=True, no_scrollbar=True):
+                    with dpg.menu_bar():
+                        dpg.add_menu(label="Bandwith Used", enabled=False)
+                    dpg.add_text(default_value="k/b 0.0")
+
+                with dpg.child_window(tag='Totol Power', width=200, height=50,menubar=True, no_scrollbar=True):
+                    with dpg.menu_bar():
+                        dpg.add_menu(label="Total Power Used", enabled=False)
+                    dpg.add_text(default_value="W/h 0.0")
+
+                with dpg.group(horizontal=True):
+                    dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="FL",user_data="FL")
+                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="Forward",user_data="forward")
+                    dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="FR",user_data="FR")
+                with dpg.group(horizontal=True):
+                    dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="Left",user_data="L")
+                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="Stop",user_data="stop")
+                    dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="Right",user_data="R")
+                with dpg.group(horizontal=True):
+                    dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="BL",user_data="BL")
+                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="Back",user_data="backward")
+                    dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="BR",user_data="BR")
+            dpg.add_slider_int(label="Speed", default_value=0, max_value=30,tag="speed")

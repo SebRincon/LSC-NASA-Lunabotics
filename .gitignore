@@ -8,3 +8,7 @@ RPI_CC/~./vim/undodir/%Users%sebastian%GoogleDrive%Dev%RMC%RPI_CC%socketServer.p
 GUI/__pycache__/controlCallbacks.cpython-39.pyc
 RPI_CC/~./vim/undodir/%Users%sebastian%GoogleDrive%Dev%RMC%RPI_CC%textClient.py
 RPI_CC/lidarTesting.ipynb
+
+GUI/widgets/__pycache__
+GUI/__pycache__
+GUI/reference/main.py

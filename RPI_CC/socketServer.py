@@ -1,7 +1,5 @@
 
 import socket
-
-from numpy import genfromtxt
 import RPi.GPIO as io
 import select
 import time
