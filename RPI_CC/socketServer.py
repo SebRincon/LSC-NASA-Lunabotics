@@ -115,25 +115,23 @@ class MotorControl():
         self.backLeftMotor.ChangeDutyCycle(int(self.direction))
 
     def setDirection(self, genDirection:str):
-        directions = {'forward': [4,24,4,24], 'backward': [24, 4, 24, 4],'stop': [0,0,0,0]}
+        directions = {
+            'f': [4,24,4,24],
+            'b': [24, 4, 24, 4],
+            'ss': [0,0,0,0],
+            'fl': [0,0,0,0],
+            'fr': [0,0,0,0],
+            'br': [0,0,0,0],
+            'bl': [0,0,0,0],
+            'r': [0,0,0,0],
+            'l': [0,0,0,0],
+            }
 
-        if genDirection == 'forward':
-            self.frontRightMotor.ChangeDutyCycle(directions['forward'][0])
-            self.fronLeftMotor.ChangeDutyCycle(directions['forward'][1])
-            self.backRightMotor.ChangeDutyCycle(directions['forward'][2])
-            self.backLeftMotor.ChangeDutyCycle(directions['forward'][3])
-
-        elif  genDirection == 'forward':
-            self.frontRightMotor.ChangeDutyCycle(directions['backward'][0])
-            self.fronLeftMotor.ChangeDutyCycle(directions['backward'][1])
-            self.backRightMotor.ChangeDutyCycle(directions['backward'][2])
-            self.backLeftMotor.ChangeDutyCycle(directions['backward'][3])
-
-        elif  genDirection == 'stop':
-            self.frontRightMotor.ChangeDutyCycle(directions['stop'][0])
-            self.fronLeftMotor.ChangeDutyCycle(directions['stop'][1])
-            self.backRightMotor.ChangeDutyCycle(directions['stop'][2])
-            self.backLeftMotor.ChangeDutyCycle(directions['stop'][3])
+        
+        self.frontRightMotor.ChangeDutyCycle(directions[genDirection][0])
+        self.fronLeftMotor.ChangeDutyCycle(directions[genDirection][1])
+        self.backRightMotor.ChangeDutyCycle(directions[genDirection][2])
+        self.backLeftMotor.ChangeDutyCycle(directions[genDirection][3])
 
 
     def sendTextViaSocket(self, message, sock):
