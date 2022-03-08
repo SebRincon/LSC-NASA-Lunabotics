@@ -1,18 +1,20 @@
 import dearpygui.dearpygui as dpg
 from widgets.setup import Setup
-from widgets.viewport import Viewport
+from widgets.viewport import Viewport, ViewportGUI
 from widgets.metrics import Metrics
 from widgets.terminal import Terminal
 from widgets.control import Control, ControlGui 
 import socket
 import select
 import time
+import array
 
 # Context Boilerplate
 dpg.create_context()
 ctr = Control() 
+vp = Viewport()
+
 connected = False
-texture_data = []
 
 
 #Setting a Default Font & Font Size
@@ -21,14 +23,18 @@ with dpg.font_registry(show=False):
 
 
 #Createing blank texture for lidar
-for i in range(0, 76800):
-    texture_data.append(100 / 255)
-    texture_data.append(100 / 255)
-    texture_data.append(100 / 255)
+texture_data = []
+for i in range(76800):
+    texture_data.append(50 / 255)
+    texture_data.append(50 / 255)
+    texture_data.append(50 / 255)
     texture_data.append(255 / 255)
+
+raw_data = array.array('f', texture_data)
+
 #Setting texture into texture_registry for widget access
 with dpg.texture_registry(show=False):
-    dpg.add_dynamic_texture(320, 240, texture_data, tag="texture_tag")
+    dpg.add_raw_texture(320, 240, raw_data, format=dpg.mvFormat_Float_rgba, tag="texture_tag")
 
 #Creating the main window setting height & width to max
 with dpg.window(tag="Primary Window", width=-1, height=-1):
@@ -38,7 +44,7 @@ with dpg.window(tag="Primary Window", width=-1, height=-1):
     Setup.createSetupModal(ctr=ctr,default_font=default_font)
     Metrics.createMetrics(default_font=default_font)
     ControlGui.createControlGUI(ctr=ctr, default_font=default_font)
-    Viewport.createViewport(default_font=default_font)
+    ViewportGUI.createViewport(default_font=default_font, VP=vp)
     Terminal.CreateTerminal(default_font=default_font)
 
 #Boilerplate GUI setup: Window size - Title

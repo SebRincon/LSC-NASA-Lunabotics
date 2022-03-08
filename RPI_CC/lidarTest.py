@@ -29,17 +29,26 @@ lcd.fill((0,0,0))
 pygame.display.update()
 
 # Setup the RPLidar
-PORT_NAME = '/dev/ttyUSB0'
+PORT_NAME = 'COM4'
 lidar = RPLidar(PORT_NAME)
-
+lidar.stop_motor()
+input('Go?: ')
 # used to scale data to fit on the screen
 max_distance = 0
 
 #pylint: disable=redefined-outer-name,global-statement
-def process_data(data):
+
+foo = 0
+def process_data(data,foo):
     global max_distance
     lcd.fill((0,0,0))
+    
+    
     for angle in range(360):
+        # if foo == 50:
+        #     print(data)
+        #     print(len(data))
+        
         distance = data[angle]
         if distance > 0:                  # ignore initially ungathered data points
             max_distance = max([min([5000, distance]), max_distance])
@@ -55,9 +64,15 @@ scan_data = [0]*360
 
 try:
     for i, scan in enumerate(lidar.iter_scans()):
-        for (_, angle, distance) in scan:
+        for (quality, angle, distance) in scan:
+            
             scan_data[min([359, floor(angle)])] = distance
-        process_data(scan_data)
+                # if foo == 50:
+                #     print(f'Quality: {quality}')
+                #     print(f'Angle: {angle}')
+                #     print(f'Distance: {distance}')
+        foo += 1
+        process_data(scan_data,foo)
 
 except KeyboardInterrupt:
     print('Stoping.')
