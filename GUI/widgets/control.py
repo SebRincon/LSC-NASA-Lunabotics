@@ -20,7 +20,6 @@ class Control():
         while not connectionSuccessful and failedConnection < 5:
             try:
                 # Create a client socket
-
                 # Connect to the server
                 self.clientSocket.connect((self.address, self.port))
                 connectionSuccessful = True
@@ -29,9 +28,9 @@ class Control():
                 dpg.set_value('connection',"Connected")
 
             except:
+
                 messageFeed = dpg.get_value('status')
                 dpg.set_value('status', f"{self.address}:{self.port}\n{messageFeed}")
-                failedConnection += 1
                 time.sleep(1)
                 pass
 

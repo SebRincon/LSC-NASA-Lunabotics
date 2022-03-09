@@ -14,7 +14,7 @@ for i in range(0, 500):
 class Terminal():
 
     def CreateTerminal(default_font):
-        with dpg.child_window(tag='Bottom Window', width=-1, height=300, pos=(0,600),label='Surface Operations'):
+        with dpg.child_window(tag='Bottom Window', width=-1, height=300, pos=(0,550),label='Surface Operations'):
             dpg.bind_font(default_font)
             with dpg.group(horizontal=True):
                 dpg.add_listbox(items=["Start Up", "Calibration", "Pathing", "Excavation", "Deposition"], width=200, num_items=6)
