@@ -6,3 +6,4 @@ raspberrypi setup - python & java & wpilibrary
 
 Dearpygui - GUI
 rplidar - Lidar Driver
+Depthai - Camera Backend
