@@ -5,3 +5,4 @@ wplibrary setup - java & wplibrary
 raspberrypi setup - python & java & wpilibrary
 
 Dearpygui - GUI
+rplidar - Lidar Driver
