@@ -11,7 +11,7 @@ lcd.fill((0,0,0))
 pygame.display.update()
 
 # Setup the RPLidar
-PORT_NAME = 'COM4'
+PORT_NAME = '/dev/ttyUSB0'
 lidar = RPLidar(PORT_NAME)
 lidar.stop_motor()
 # input('Go?: ')

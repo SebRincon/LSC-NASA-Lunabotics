@@ -127,15 +127,15 @@ class ControlGui():
                     dpg.add_text(default_value="W/h 0.0")
 
                 with dpg.group(horizontal=True):
-                    dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="FL",user_data="FL")
-                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="Forward",user_data="forward")
-                    dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="FR",user_data="FR")
+                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="FL",user_data="FL")
+                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="Forward",user_data="F")
+                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="FR",user_data="FR")
                 with dpg.group(horizontal=True):
-                    dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="Left",user_data="L")
-                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="Stop",user_data="stop")
-                    dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="Right",user_data="R")
+                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="Left",user_data="L")
+                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="Stop",user_data="S")
+                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="Right",user_data="R")
                 with dpg.group(horizontal=True):
-                    dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="BL",user_data="BL")
-                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="Back",user_data="backward")
-                    dpg.add_button(callback=ctr.sendVelocity, width=60,height=40,label="BR",user_data="BR")
+                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="BL",user_data="BL")
+                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="Back",user_data="B")
+                    dpg.add_button(callback=ctr.sendDirections, width=60,height=40,label="BR",user_data="BR")
             dpg.add_slider_int(label="Speed", default_value=0, max_value=30,tag="speed")

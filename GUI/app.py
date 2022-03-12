@@ -13,6 +13,7 @@ import array
 dpg.create_context()
 ctr = Control() 
 vp = Viewport()
+# vp.pyGameDisplay()
 
 connected = False
 
@@ -23,18 +24,11 @@ with dpg.font_registry(show=False):
 
 
 #Createing blank texture for lidar
-texture_data = []
-for i in range(76800):
-    texture_data.append(50 / 255)
-    texture_data.append(50 / 255)
-    texture_data.append(50 / 255)
-    texture_data.append(255 / 255)
-
-raw_data = array.array('f', texture_data)
+width, height, channels, data = dpg.load_image("my.png")
 
 #Setting texture into texture_registry for widget access
 with dpg.texture_registry(show=False):
-    dpg.add_raw_texture(320, 240, raw_data, format=dpg.mvFormat_Float_rgba, tag="texture_tag")
+    dpg.add_dynamic_texture(width, height, data, tag="texture_tag")
 
 #Creating the main window setting height & width to max
 with dpg.window(tag="Primary Window", width=-1, height=-1):
