@@ -1,0 +1,142 @@
+{
+  "main": {
+    "id": "2fd526da86297873",
+    "type": "split",
+    "children": [
+      {
+        "id": "771c2bfd7e95ea43",
+        "type": "split",
+        "children": [
+          {
+            "id": "2755aa9118c86ec6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Obsidian Notes/OAK-D.md",
+                "mode": "source",
+                "source": false
+              }
+            },
+            "group": "ddc43fd0a38434df"
+          },
+          {
+            "id": "b0cd0dc87c1d541b",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "Obsidian Notes/OAK-D.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1.26683455545722,
+                  "close": false
+                }
+              }
+            },
+            "group": "ddc43fd0a38434df"
+          }
+        ],
+        "direction": "horizontal"
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "003fd21ba5862f73",
+    "type": "split",
+    "children": [
+      {
+        "id": "be1614bfe21bb897",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "878b1f603c559ea6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "f26c0584f1cac16b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "644d7aa59caa8017",
+    "type": "split",
+    "children": [
+      {
+        "id": "16cab6acf7b051f0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0041f39af92a5fe4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Obsidian Notes/OAK-D.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "2755aa9118c86ec6",
+  "lastOpenFiles": [
+    "Obsidian Notes/OAK-D.md",
+    "Obsidian Notes/ROS.md",
+    "Obsidian Notes/Lidar.md",
+    "Obsidian Notes/SLAM.md",
+    "sensors.md"
+  ]
+}
