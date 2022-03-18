@@ -12,3 +12,5 @@ RPI_CC/lidarTesting.ipynb
 GUI/widgets/__pycache__
 GUI/__pycache__
 GUI/reference/main.py
+ROS/catkin_ws/build
+ROS/catkin_ws/devel
