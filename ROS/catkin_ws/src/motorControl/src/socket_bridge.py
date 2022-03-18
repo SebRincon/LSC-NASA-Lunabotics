@@ -15,7 +15,7 @@ class SocketBridge():
         else: 
             self.PORT = int(serverPort)
 
-
+    # Function to connect to socket as client
     def connect(self):
         self.clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         connectionSuccessful = False
@@ -37,18 +37,21 @@ class SocketBridge():
         if failedConnection >= 5:
             return False
 
+    # Pass velocity_publisher, and wait for new message to publish from sever
     def publishData(self, velocity_publisher):
         dataFromServer = self.clientSocket.recv(1024)
-        
         velocity_publisher.publish(dataFromServer.decode())
 
     
 if __name__ == '__main__':
+    # Setup up socket connection
     bridge = SocketBridge()
     bridge.setup()
+
     if bridge.connect():
         rospy.init_node('socket_bridge', anonymous=True)
         velocity_publisher = rospy.Publisher("motor_control/direction", String, queue_size=10)
+        # loop
         while True:
             bridge.publishData(velocity_publisher)
             time.sleep(1)
