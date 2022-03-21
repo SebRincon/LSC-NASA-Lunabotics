@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+ <launch>
+    <!-- startup simulated world -->
+    <include file="$(find my_simulations)/launch/my_world.launch">
+  </include>
+  <include file="$(find my_simulations)/launch/my_rover.launch">
+  </include>
+   <!-- <include file="$(find my_simulations)/launch/rviz_visual.launch">
+  </include> -->
+</launch>

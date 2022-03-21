@@ -1,0 +1,5 @@
+<launch>
+  <arg name="model"/>
+  <param name="robot_description"
+    command="$(find xacro)/xacro --inorder '$(find my_simulations)/urdf/rover.urdf.xacro'" />
+</launch>

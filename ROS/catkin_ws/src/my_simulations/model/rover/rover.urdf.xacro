@@ -1,0 +1,209 @@
+<?xml version='1.0'?>
+
+<robot name="rover" xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:include filename="$(find my_simulations)/urdf/common_properties.xacro"/>
+    <xacro:include filename="$(find my_simulations)/urdf/rover.gazebo.xacro"/>
+    <link name="wheel_1">
+        <visual>
+            <origin xyz="-0.302073 -0.274046 0.0375" rpy="-1.5708 -1.5708 0" />
+            <geometry>
+                <!-- $(find my_simulations)/urdf/ -->
+                <mesh filename="package://wheel_1.stl" />
+            </geometry>
+            <material name="wheel_1_material">
+                <color rgba="0.615686 0.811765 0.929412 1.0" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.302073 -0.274046 0.0375" rpy="-1.5708 -1.5708 0" />
+            <geometry>
+                <mesh filename="package://wheel_1.stl" />
+            </geometry>
+            <material name="wheel_1_material">
+                <color rgba="0.615686 0.811765 0.929412 1.0" />
+            </material>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.00629423" />
+            <inertia ixx="3.792" ixy="0" ixz="0" iyy="3.792" iyz="0" izz="7.071" />
+        </inertial>
+    </link>
+
+    <link name="base">
+        <visual>
+            <origin xyz="0.274046 0.0375 -0.327073" rpy="1.5708 1.5708 0" />
+            <geometry>
+                <mesh filename="package://base.stl" />
+            </geometry>
+            <material name="base_material">
+                <color rgba="0.615686 0.811765 0.929412 1.0" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.274046 0.0375 -0.327073" rpy="1.5708 1.5708 0" />
+            <geometry>
+                <mesh filename="package://base.stl" />
+            </geometry>
+            <material name="base_material">
+                <color rgba="0.615686 0.811765 0.929412 1.0" />
+            </material>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.154507" />
+            <inertia ixx="0.005" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+        </inertial>
+    </link>
+
+    <link name="wheel_1_2">
+        <visual>
+            <origin xyz="0 0 0.076" rpy="1.5708 -0 0" />
+            <geometry>
+                <mesh filename="package://wheel_1.stl" />
+            </geometry>
+            <material name="wheel_1_material">
+                <color rgba="0.615686 0.811765 0.929412 1.0" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.076" rpy="1.5708 -0 0" />
+            <geometry>
+                <mesh filename="package://wheel_1.stl" />
+            </geometry>
+            <material name="wheel_1_material">
+                <color rgba="0.615686 0.811765 0.929412 1.0" />
+            </material>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.00629423" />
+            <inertia ixx="3.792" ixy="0" ixz="0" iyy="3.792" iyz="0" izz="7.071" />
+        </inertial>
+    </link>
+
+    <joint name="wheel1" type="revolute">
+        <origin xyz="0 0 -0.63" rpy="3.14159 -0 0" />
+        <parent link="base" />
+        <child link="wheel_1_2" />
+        <axis xyz="0 0 1" />
+        <limit effort="1" velocity="20" lower="0" upper="6.28319" />
+        <joint_properties friction="0.0" />
+    </joint>
+
+    <link name="wheel_1_3">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5708 -0 0" />
+            <geometry>
+                <mesh filename="package://wheel_1.stl" />
+            </geometry>
+            <material name="wheel_1_material">
+                <color rgba="0.615686 0.811765 0.929412 1.0" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.5708 -0 0" />
+            <geometry>
+                <mesh filename="package://wheel_1.stl" />
+            </geometry>
+            <material name="wheel_1_material">
+                <color rgba="0.615686 0.811765 0.929412 1.0" />
+            </material>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.00629423" />
+            <inertia ixx="3.792" ixy="0" ixz="0" iyy="3.792" iyz="0" izz="7.071" />
+        </inertial>
+    </link>
+
+    <joint name="wheel2" type="revolute">
+        <origin xyz="0.548092 -1.38778e-17 -0.63" rpy="0 -0 3.14159" />
+        <parent link="base" />
+        <child link="wheel_1_3" />
+        <axis xyz="0 0 1" />
+        <limit effort="1" velocity="20" lower="0" upper="6.28319" />
+        <joint_properties friction="0.0" />
+    </joint>
+
+    <link name="wheel_1_4">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5708 -0 0" />
+            <geometry>
+                <mesh filename="package://wheel_1.stl" />
+            </geometry>
+            <material name="wheel_1_material">
+                <color rgba="0.615686 0.811765 0.929412 1.0" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.5708 -0 0" />
+            <geometry>
+                <mesh filename="package://wheel_1.stl" />
+            </geometry>
+            <material name="wheel_1_material">
+                <color rgba="0.615686 0.811765 0.929412 1.0" />
+            </material>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.00629423" />
+            <inertia ixx="3.792" ixy="0" ixz="0" iyy="3.792" iyz="0" izz="7.071" />
+        </inertial>
+    </link>
+
+    <joint name="wheel3" type="revolute">
+        <origin xyz="0.548092 0 -0.025" rpy="3.14159 -0 -1.5708" />
+        <parent link="base" />
+        <child link="wheel_1_4" />
+        <axis xyz="0 0 1" />
+        <limit effort="1" velocity="20" lower="0" upper="6.28319" />
+        <joint_properties friction="0.0" />
+    </joint>
+
+    <link name="lidar_base">
+        <visual>
+            <origin xyz="-0.0147234 -0.00283662 -0.01" rpy="3.14159 -0 0" />
+            <geometry>
+                <mesh filename="package://lidar_base.stl" />
+            </geometry>
+            <material name="lidar_base_material">
+                <color rgba="0.972549 0.529412 0.00392157 1.0" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.0147234 -0.00283662 -0.01" rpy="3.14159 -0 0" />
+            <geometry>
+                <mesh filename="package://lidar_base.stl" />
+            </geometry>
+            <material name="lidar_base_material">
+                <color rgba="0.972549 0.529412 0.00392157 1.0" />
+            </material>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.125" />
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+        </inertial>
+    </link>
+
+    <joint name="lidar" type="fixed">
+        <origin xyz="-0.175954 -0.1125 -0.327073" rpy="-1.5708 -0 0" />
+        <parent link="base" />
+        <child link="lidar_base" />
+        <axis xyz="0 0 1" />
+        <limit effort="1" velocity="20" />
+        <joint_properties friction="0.0" />
+    </joint>
+
+    <joint name="wheel4" type="revolute">
+        <origin xyz="-0.327073 -0.274046 0.0375" rpy="-1.5708 -0 1.5708" />
+        <parent link="wheel_1" />
+        <child link="base" />
+        <axis xyz="0 0 1" />
+        <limit effort="1" velocity="20" lower="0" upper="6.28319" />
+        <joint_properties friction="0.0" />
+    </joint>
+
+
+</robot>
