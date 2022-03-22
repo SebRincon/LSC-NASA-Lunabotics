@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Obsidian Notes/OAK-D.md",
+                "file": "Obsidian Notes/SLAM.md",
                 "mode": "source",
                 "source": false
               }
@@ -26,7 +26,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Obsidian Notes/OAK-D.md",
+                "file": "Obsidian Notes/SLAM.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -113,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Obsidian Notes/OAK-D.md",
+                "file": "Obsidian Notes/SLAM.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,10 +133,10 @@
   },
   "active": "2755aa9118c86ec6",
   "lastOpenFiles": [
+    "Obsidian Notes/SLAM.md",
+    "Obsidian Notes/Lidar.md",
     "Obsidian Notes/OAK-D.md",
     "Obsidian Notes/ROS.md",
-    "Obsidian Notes/Lidar.md",
-    "Obsidian Notes/SLAM.md",
     "sensors.md"
   ]
 }
