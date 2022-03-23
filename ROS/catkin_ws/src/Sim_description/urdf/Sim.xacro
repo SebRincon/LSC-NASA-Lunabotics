@@ -27,19 +27,19 @@
 
 <link name="wheel1_1">
   <inertial>
-    <origin rpy="0 0 0" xyz="4.440892098500626e-15 -0.033118713221114426 -0.11614999999999634"/>
-    <mass value="5.16787815760831"/>
-    <inertia ixx="0.032523" ixy="0.0" ixz="0.0" iyy="0.060048" iyz="0.0" izz="0.032523"/>
+    <origin rpy="0 0 0" xyz="-1.1102230246251565e-16 -0.03810000000000002 3.6914915568786455e-15"/>
+    <mass value="5.17079983877615"/>
+    <inertia ixx="0.032526" ixy="0.0" ixz="0.0" iyy="0.060048" iyz="0.0" izz="0.032526"/>
   </inertial>
   <visual>
-    <origin rpy="0 0 0" xyz="-0.275 0.31 -0.26855"/>
+    <origin rpy="0 0 0" xyz="-0.275 0.31 -0.1524"/>
     <geometry>
       <mesh filename="package://Sim_description/meshes/wheel1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin rpy="0 0 0" xyz="-0.275 0.31 -0.26855"/>
+    <origin rpy="0 0 0" xyz="-0.275 0.31 -0.1524"/>
     <geometry>
       <mesh filename="package://Sim_description/meshes/wheel1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -48,120 +48,93 @@
 
 <link name="wheel4_1">
   <inertial>
-    <origin rpy="0 0 0" xyz="-4.6074255521944e-15 -0.033118713221114315 -0.11614999999999634"/>
-    <mass value="5.16787815760831"/>
-    <inertia ixx="0.032523" ixy="0.0" ixz="0.0" iyy="0.060048" iyz="-0.0" izz="0.032523"/>
+    <origin rpy="0 0 0" xyz="-5.551115123125783e-17 -0.038099999999999856 3.6914915568786455e-15"/>
+    <mass value="5.17079983877615"/>
+    <inertia ixx="0.032526" ixy="-0.0" ixz="0.0" iyy="0.060048" iyz="0.0" izz="0.032526"/>
   </inertial>
   <visual>
-    <origin rpy="0 0 0" xyz="0.275 0.31 -0.26855"/>
+    <origin rpy="0 0 0" xyz="0.275 0.31 -0.1524"/>
     <geometry>
       <mesh filename="package://Sim_description/meshes/wheel4_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin rpy="0 0 0" xyz="0.275 0.31 -0.26855"/>
+    <origin rpy="0 0 0" xyz="0.275 0.31 -0.1524"/>
     <geometry>
       <mesh filename="package://Sim_description/meshes/wheel4_1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-  </collision>
-</link>
-
-<link name="wheel2_1">
-  <inertial>
-    <origin rpy="0 0 0" xyz="1.1102230246251565e-16 0.033118713221114315 -0.11614999999999634"/>
-    <mass value="5.16787815760831"/>
-    <inertia ixx="0.032523" ixy="0.0" ixz="0.0" iyy="0.060048" iyz="0.0" izz="0.032523"/>
-  </inertial>
-  <visual>
-    <origin rpy="0 0 0" xyz="-0.275 -0.31 -0.26855"/>
-    <geometry>
-      <mesh filename="package://Sim_description/meshes/wheel2_1.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-    <material name="silver"/>
-  </visual>
-  <collision>
-    <origin rpy="0 0 0" xyz="-0.275 -0.31 -0.26855"/>
-    <geometry>
-      <mesh filename="package://Sim_description/meshes/wheel2_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
 <link name="wheel3_1">
   <inertial>
-    <origin rpy="0 0 0" xyz="1.6653345369377348e-16 0.033118713221114426 -0.11614999999999634"/>
-    <mass value="5.16787815760831"/>
-    <inertia ixx="0.032523" ixy="0.0" ixz="0.0" iyy="0.060048" iyz="-0.0" izz="0.032523"/>
+    <origin rpy="0 0 0" xyz="1.1102230246251565e-16 0.03810000000000002 3.6914915568786455e-15"/>
+    <mass value="5.17079983877615"/>
+    <inertia ixx="0.032526" ixy="-0.0" ixz="0.0" iyy="0.060048" iyz="-0.0" izz="0.032526"/>
   </inertial>
   <visual>
-    <origin rpy="0 0 0" xyz="0.275 -0.31 -0.26855"/>
+    <origin rpy="0 0 0" xyz="0.275 -0.31 -0.1524"/>
     <geometry>
       <mesh filename="package://Sim_description/meshes/wheel3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin rpy="0 0 0" xyz="0.275 -0.31 -0.26855"/>
+    <origin rpy="0 0 0" xyz="0.275 -0.31 -0.1524"/>
     <geometry>
       <mesh filename="package://Sim_description/meshes/wheel3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="lidar_1">
+<link name="wheel2_1">
   <inertial>
-    <origin rpy="0 0 0" xyz="5.551115123125783e-17 -1.388112759759698e-16 0.01250000000000362"/>
-    <mass value="0.10789485809488791"/>
-    <inertia ixx="4.1e-05" ixy="-0.0" ixz="0.0" iyy="4.1e-05" iyz="-0.0" izz="7e-05"/>
+    <origin rpy="0 0 0" xyz="1.1102230246251565e-16 0.038099999999999856 3.6914915568786455e-15"/>
+    <mass value="5.17079983877615"/>
+    <inertia ixx="0.032526" ixy="0.0" ixz="0.0" iyy="0.060048" iyz="0.0" izz="0.032526"/>
   </inertial>
   <visual>
-    <origin rpy="0 0 0" xyz="-0.4 0.0 -0.29615"/>
+    <origin rpy="0 0 0" xyz="-0.275 -0.31 -0.1524"/>
     <geometry>
-      <mesh filename="package://Sim_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://Sim_description/meshes/wheel2_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin rpy="0 0 0" xyz="-0.4 0.0 -0.29615"/>
+    <origin rpy="0 0 0" xyz="-0.275 -0.31 -0.1524"/>
     <geometry>
-      <mesh filename="package://Sim_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://Sim_description/meshes/wheel2_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<joint name="Rev1" type="continuous">
-  <origin rpy="0 0 0" xyz="0.275 -0.31 0.26855"/>
+<joint name="Rev6" type="continuous">
+  <origin rpy="0 0 0" xyz="0.275 -0.31 0.1524"/>
   <parent link="base_link"/>
   <child link="wheel1_1"/>
   <axis xyz="-0.0 -1.0 0.0"/>
 </joint>
 
-<joint name="Rev2" type="continuous">
-  <origin rpy="0 0 0" xyz="-0.275 -0.31 0.26855"/>
+<joint name="Rev7" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.275 -0.31 0.1524"/>
   <parent link="base_link"/>
   <child link="wheel4_1"/>
   <axis xyz="-0.0 -1.0 0.0"/>
 </joint>
 
-<joint name="Rev3" type="continuous">
-  <origin rpy="0 0 0" xyz="0.275 0.31 0.26855"/>
-  <parent link="base_link"/>
-  <child link="wheel2_1"/>
-  <axis xyz="0.0 1.0 0.0"/>
-</joint>
-
-<joint name="Rev4" type="continuous">
-  <origin rpy="0 0 0" xyz="-0.275 0.31 0.26855"/>
+<joint name="Rev8" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.275 0.31 0.1524"/>
   <parent link="base_link"/>
   <child link="wheel3_1"/>
   <axis xyz="0.0 1.0 0.0"/>
 </joint>
 
-<joint name="Rigid5" type="fixed">
-  <origin rpy="0 0 0" xyz="0.4 0.0 0.29615"/>
+<joint name="Rev9" type="continuous">
+  <origin rpy="0 0 0" xyz="0.275 0.31 0.1524"/>
   <parent link="base_link"/>
-  <child link="lidar_1"/>
+  <child link="wheel2_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
 </joint>
 
 </robot>
