@@ -109,6 +109,27 @@
   </collision>
 </link>
 
+<link name="lidar_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="5.551115123125783e-17 -1.388112759759698e-16 0.01250000000000362"/>
+    <mass value="0.10789485809488791"/>
+    <inertia ixx="4.1e-05" ixy="-0.0" ixz="0.0" iyy="4.1e-05" iyz="-0.0" izz="7e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.4 0.0 -0.29615"/>
+    <geometry>
+      <mesh filename="package://Sim_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.4 0.0 -0.29615"/>
+    <geometry>
+      <mesh filename="package://Sim_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
 <joint name="Rev6" type="continuous">
   <origin rpy="0 0 0" xyz="0.275 -0.31 0.1524"/>
   <parent link="base_link"/>
@@ -135,6 +156,12 @@
   <parent link="base_link"/>
   <child link="wheel2_1"/>
   <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rigid10" type="fixed">
+  <origin rpy="0 0 0" xyz="0.4 0.0 0.29615"/>
+  <parent link="base_link"/>
+  <child link="lidar_1"/>
 </joint>
 
 </robot>
