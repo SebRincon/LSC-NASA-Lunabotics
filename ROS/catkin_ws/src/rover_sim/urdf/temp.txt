@@ -1,0 +1,88 @@
+<!-- 
+<gazebo>
+  <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+    <!-- Plugin update rate in Hz -->
+    <updateRate>100.0</updateRate>
+    <!-- <robotNamespace>/sim</robotNamespace> -->
+    <leftFrontJoint>rev9</leftFrontJoint>
+    <rightFrontJoint>rev6</rightFrontJoint>
+    <leftRearJoint>rev8</leftRearJoint>
+    <rightRearJoint>rev7</rightRearJoint>
+    <!-- The distance from the center of one wheel to the other, in meters, defaults to 0.34 m -->
+    <wheelSeparation>0.696</wheelSeparation>
+    <!-- Diameter of the wheels, in meters, defaults to 0.15 m -->
+    <wheelDiameter>0.3048</wheelDiameter>
+    <robotBaseFrame>base_link</robotBaseFrame>
+    <!-- Topic to receive geometry_msgs/Twist message commands, defaults to `cmd_vel` -->
+    <commandTopic>cmd_vel</commandTopic>
+
+    <!-- Topic to publish nav_msgs/Odometry messages, defaults to `odom` -->
+    <odometryTopic>odom</odometryTopic>
+
+    <!-- Odometry frame, defaults to `odom` -->
+    <odometryFrame>odom</odometryFrame>
+    <!-- Maximum torque which the wheels can produce, in Nm, defaults to 5 Nm -->
+    <torque>20</torque>
+    <topicName>cmd_vel1</topicName>
+    <broadcastTF>true</broadcastTF>
+    <covariance_x>0.000100</covariance_x>
+    <covariance_y>0.000100</covariance_y>
+    <covariance_yaw>0.0100</covariance_yaw>
+  </plugin>
+</gazebo> -->
+
+
+
+
+
+<gazebo>
+  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+
+    <!-- Plugin update rate in Hz -->
+    <updateRate>100</updateRate>
+
+    <!-- Name of left joint, defaults to `left_joint` -->
+    <leftJoint>rev8</leftJoint>
+
+    <!-- Name of right joint, defaults to `right_joint` -->
+    <rightJoint>rev7</rightJoint>
+
+    <!-- The distance from the center of one wheel to the other, in meters, defaults to 0.34 m -->
+    <!-- The distance from the center of one wheel to the other, in meters, defaults to 0.34 m -->
+    <wheelSeparation>0.696</wheelSeparation>
+    <!-- Diameter of the wheels, in meters, defaults to 0.15 m -->
+    <wheelDiameter>0.3048</wheelDiameter>
+    <!-- Wheel acceleration, in rad/s^2, defaults to 0.0 rad/s^2 -->
+    <wheelAcceleration>1.0</wheelAcceleration>
+
+    <!-- Maximum torque which the wheels can produce, in Nm, defaults to 5 Nm -->
+    <wheelTorque>20</wheelTorque>
+
+    <!-- Topic to receive geometry_msgs/Twist message commands, defaults to `cmd_vel` -->
+    <commandTopic>cmd_vel</commandTopic>
+
+    <!-- Topic to publish nav_msgs/Odometry messages, defaults to `odom` -->
+    <odometryTopic>odom</odometryTopic>
+
+    <!-- Odometry frame, defaults to `odom` -->
+    <odometryFrame>odom</odometryFrame>
+
+    <!-- Robot frame to calculate odometry from, defaults to `base_footprint` -->
+    <robotBaseFrame>base_link</robotBaseFrame>
+
+    <!-- Odometry source, 0 for ENCODER, 1 for WORLD, defaults to WORLD -->
+    <odometrySource>1</odometrySource>
+
+    <!-- Set to true to publish transforms for the wheel links, defaults to false -->
+    <publishWheelTF>true</publishWheelTF>
+
+    <!-- Set to true to publish transforms for the odometry, defaults to true -->
+    <publishOdom>true</publishOdom>
+
+    <!-- Set to true to publish sensor_msgs/JointState on /joint_states for the wheel joints, defaults to false -->
+    <publishWheelJointState>true</publishWheelJointState>
+
+    <!-- Set to true to swap right and left wheels, defaults to true -->
+    <legacyMode>false</legacyMode>
+  </plugin>
+</gazebo>
