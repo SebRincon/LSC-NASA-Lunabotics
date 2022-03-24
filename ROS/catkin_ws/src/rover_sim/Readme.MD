@@ -16,3 +16,9 @@ Run `rostopic pub -r 1 /cmd_demo geometry_msgs/Twist  '{linear:  {x: 0.3, y: 0.0
 
 #### Stop Movement
 Run `rostopic pub -r 1 /cmd_demo geometry_msgs/Twist  '{linear:  {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0,y: 0.0,z: 0.0}}'`
+
+#### Develop Programs
+- Use the topic `/cmd_demo` to publish twist messages, and create movements
+- The movement plugin is using the topic `/odom_demo` to send odometry messages
+-  'skid_steer_drive' is the plugin used to achive movement, the docs are located @
+-  https://github.com/ros-simulation/gazebo_ros_pkgs/wiki/ROS-2-Migration%3A-Skid-Steer-drive
