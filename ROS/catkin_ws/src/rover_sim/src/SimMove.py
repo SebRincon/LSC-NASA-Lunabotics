@@ -1,16 +1,19 @@
-# /usr/bin/env python3
+#! /usr/bin/env python3
+from turtle import distance
 import rospy
 from geometry_msgs.msg import Twist
+from nav_msgs.msg import Odometry
 import math
 import time
 # from turtlesim.msg import Pose
-
+x = 0
+y = 0
 
 def move(velocity_publisher, speed, distance, is_forward):
     # declare a Twist message to send velocity commands
     velocity_message = Twist()
     # get current location
-    global x, y
+    # global x, y
     x0 = x  # save the initial location x-coordinate
     y0 = y  # save the initial location y-coordinate
     if (is_forward):
@@ -36,18 +39,24 @@ def move(velocity_publisher, speed, distance, is_forward):
 
 
 def poseCallback(pose_message):
-    global x
-    global y, yaw
-    x = pose_message.x
-    y = pose_message.y
-    yaw = pose_message.theta
+    x = pose_message.pose.pose.position.x
+    y = pose_message.pose.pose.position.y
+    # yaw = pose_message.theta
+    print(f"x:  {pose_message.pose.pose.position.x}")
+    print(f"y:  {pose_message.pose.pose.position.y}")
+    # print(type(pose_message))
 
 
 if __name__ == '__main__':
-    rospy.init_node('turtlesim_motion_pose', anonymous=True)
+    rospy.init_node('rover_control', anonymous=True)
     # declare velocity publisher
     cmd_vel_topic = '/cmd_demo'
     velocity_publisher = rospy.Publisher(cmd_vel_topic, Twist, queue_size=10)
-    #position_topic = "/turtle1/pose"
-    #pose_subscriber = rospy.Subscriber(position_topic, Pose, poseCallback)
+    # _speed = input("Input Speed: ")
+    # _distance = input("Distance Speed: ")
+    _speed = 1
+    _distance = 1
+    position_topic = "/odom_demo"
+    pose_subscriber = rospy.Subscriber(position_topic, Odometry, poseCallback)
+    move(velocity_publisher, int(_speed), int(_distance), True)
     time.sleep(2)

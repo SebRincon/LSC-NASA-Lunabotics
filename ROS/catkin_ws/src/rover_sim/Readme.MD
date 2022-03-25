@@ -22,3 +22,17 @@ Run `rostopic pub -r 1 /cmd_demo geometry_msgs/Twist  '{linear:  {x: 0.0, y: 0.0
 - The movement plugin is using the topic `/odom_demo` to send odometry messages
 -  'skid_steer_drive' is the plugin used to achive movement, the docs are located @
 -  https://github.com/ros-simulation/gazebo_ros_pkgs/wiki/ROS-2-Migration%3A-Skid-Steer-drive
+
+
+#### Make Python files executable 
+PYTHON FILES WILL NOT RUN UNTIL THIS DONE 
+Run `chmod +x simMove.py`
+Run `chmod +x getOdom.py`
+
+
+#### Run Example 
+Run `rosrun rover_sim simMove.py`
+- This will make to rover move at set speed
+
+Run `rosrun rover_sim getOdom.py`
+- This will print the current X & Y coordinates
