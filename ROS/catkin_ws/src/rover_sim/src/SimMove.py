@@ -9,17 +9,19 @@ import time
 x = 0
 y = 0
 
-def move(velocity_publisher, speed, distance, is_forward):
+def move(velocity_publisher, speed, distance, angle, is_forward):
     # declare a Twist message to send velocity commands
     velocity_message = Twist()
     # get current location
     # global x, y
     x0 = x  # save the initial location x-coordinate
     y0 = y  # save the initial location y-coordinate
+    velocity_message.angular.y 
+
     if (is_forward):
         velocity_message.linear.x = abs(speed)
     else:
-        velocity_message. linear.x = -abs(speed)
+        velocity_message.linear.x = -abs(speed)
     distance_moved = 0.0
     # we publish the velocity at 10 Hz (10 times a second)
     loop_rate = rospy.Rate(10)
@@ -27,8 +29,10 @@ def move(velocity_publisher, speed, distance, is_forward):
         rospy.loginfo("Turtlesim moves forwards")
         velocity_publisher.publish(velocity_message)
         loop_rate.sleep()
+        time.sleep(1)
         # Pythagoras theorem
-        distance_moved = abs(math.sqrt(((x-x0) ** 2) + ((y-y0) ** 2)))
+        # distance_moved = abs(math.sqrt(((x-x0) ** 2) + ((y-y0) ** 2)))
+        distance_moved += 1
         print(distance_moved)
         if not (distance_moved < distance):
             rospy.loginfo("reached")
@@ -50,13 +54,15 @@ def poseCallback(pose_message):
 if __name__ == '__main__':
     rospy.init_node('rover_control', anonymous=True)
     # declare velocity publisher
-    cmd_vel_topic = '/cmd_demo'
+    cmd_vel_topic = '/cmd_vel'
     velocity_publisher = rospy.Publisher(cmd_vel_topic, Twist, queue_size=10)
-    # _speed = input("Input Speed: ")
-    # _distance = input("Distance Speed: ")
-    _speed = 1
-    _distance = 1
+    _speed = input("Input Speed: ")
+    _distance = input("Distance Speed: ")
+    _angle = input("Angle: ")
+
+    # _speed = 1
+    # _distance = 1
     position_topic = "/odom_demo"
-    pose_subscriber = rospy.Subscriber(position_topic, Odometry, poseCallback)
-    move(velocity_publisher, int(_speed), int(_distance), True)
+    # pose_subscriber = rospy.Subscriber(position_topic, Odometry, poseCallback)
+    move(velocity_publisher, int(_speed), int(_distance), int(_angle),True)
     time.sleep(2)
