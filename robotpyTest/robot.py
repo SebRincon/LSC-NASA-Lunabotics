@@ -1,7 +1,10 @@
 import time
 import wpilib
+import wpilib.drive
 import logging
-from networktables import NetworkTables
+
+
+# from networktables import NetworkTables
 
 class MyRobot(wpilib.TimedRobot):
 
@@ -16,23 +19,20 @@ class MyRobot(wpilib.TimedRobot):
 
         self.drive = wpilib.drive.DifferentialDrive(self.left, self.right)
         self.timer = wpilib.Timer()
+        self.network = wpilib.SmartDashboard
 
-        self.NetworkTables.initialize()
-        self.sd = NetworkTables.getTable("SmartDashboard")
+        self.network.putNumberArray('velocity',[0.0, 0.0])
 
-    def autonomousInit(self):
-        """This function is run once each time the robot enters autonomous mode."""
-        self.timer.reset()
-        self.timer.start()
+    def disabledInit(self):
+        pass
 
-    def autonomousPeriodic(self):
+    def disabledPeriodic(self):
+    
         """This function is called periodically during autonomous."""
 
-        # Drive for two seconds
-        if self.timer.get() < 2.0:
-            self.drive.arcadeDrive(-0.5, 0)  # Drive forwards at half speed
-        else:
-            self.drive.arcadeDrive(0, 0)  # Stop robot
+        _velocity = self.network.getNumberArray(key='velocity', defaultValue=[0.0,0.0])
+        # print(_velocity)
+        self.drive.arcadeDrive(_velocity[0], _velocity[1])  # Drive forwards at half speed
 
 if __name__ == '__main__':
     wpilib.run(MyRobot)
