@@ -16,3 +16,10 @@ ROS/catkin_ws/build
 ROS/catkin_ws/devel
 ROS/catkin_ws/.catkin_workspace
 robotpyTest/Pipfile
+Pipfile
+.gitignore
+ROS/catkin_ws/rospy
+ROS/catkin_ws/src/rplidar_ros
+ROS/catkin_ws/threading
+Pipfile.lock
+robotpyTest/test.py
