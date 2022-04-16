@@ -3,3 +3,4 @@ rplidar-roboticia
 requests
 fastapi
 uvicorn
+numpy

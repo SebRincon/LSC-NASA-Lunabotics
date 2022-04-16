@@ -18,5 +18,5 @@ class Setup():
                 dpg.add_input_text(default_value="10001", uppercase=True, width=-1, tag='serverPort')
 
             with dpg.group(horizontal=True):
-                dpg.add_button(label="OK", width=75, callback=ctr.simpleSetup)
+                dpg.add_button(label="OK", width=75, callback=ctr.setup)
                 dpg.add_button(label="Cancel", width=75, callback=lambda: dpg.configure_item("modal_id", show=False))

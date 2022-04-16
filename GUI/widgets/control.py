@@ -116,12 +116,8 @@ class ControlGui():
                         dpg.add_menu(label="Timer", enabled=False)
                     dpg.add_text(default_value="Min 0:0")
 
-                with dpg.child_window(tag='Bandwidth', width=200, height=50,menubar=True, no_scrollbar=True):
-                    with dpg.menu_bar():
-                        dpg.add_menu(label="Bandwith Used", enabled=False)
-                    dpg.add_text(default_value="k/b 0.0")
 
-                with dpg.child_window(tag='Totol Power', width=200, height=50,menubar=True, no_scrollbar=True):
+                with dpg.child_window(tag='Total Power', width=200, height=50,menubar=True, no_scrollbar=True):
                     with dpg.menu_bar():
                         dpg.add_menu(label="Total Power Used", enabled=False)
                     dpg.add_text(default_value="W/h 0.0")
