@@ -24,3 +24,4 @@ ROS/catkin_ws/threading
 Pipfile.lock
 robotpyTest/test.py
 venv/
+GUI/gearbox/__pycache__/setup.cpython-39.pyc
