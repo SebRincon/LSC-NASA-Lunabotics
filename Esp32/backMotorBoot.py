@@ -16,9 +16,9 @@ def moveMotor(isForward):
     from machine import Pin
     import time
 
-    pinEnabled = Pin(5, Pin.OUT,value=0)
-    pinStep = Pin(4, Pin.OUT)
-    pinDirection = Pin(0, Pin.OUT)
+    pinEnabled = Pin(23, Pin.OUT,value=0)
+    pinStep = Pin(22, Pin.OUT)
+    pinDirection = Pin(1, Pin.OUT)
 
     stepsPerRevolution = 200
 
@@ -45,7 +45,7 @@ def socketConnection():
 
     print("data is type {}".format(type(data)))
 
-    sock.connect(('192.168.1.100', 5011))
+    sock.connect(('192.168.1.101', 5000))
     
     _resp = sock.recv(1024)
     print(_resp)
@@ -62,24 +62,8 @@ def socketConnection():
             moveMotor(False)
         elif _data == b'bk_fw':
             moveMotor(True)
-            
-        
-        
-    
-    
     sock.close()
-
     
-
-def starWars():
-    addr_info = socket.getaddrinfo("towel.blinkenlights.nl", 23)
-    addr = addr_info[0][-1]
-    s = socket.socket()
-    s.connect(addr)
-    
-    while True:
-        data = s.recv(500)
-        print(str(data, 'utf8'), end='')
 
 do_connect()
 socketConnection()

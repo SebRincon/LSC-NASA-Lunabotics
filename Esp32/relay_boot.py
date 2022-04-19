@@ -22,7 +22,7 @@ def do_connect():
 def relay(isON):
 
     # ESP32 GPIO 26
-    relay = Pin(26, Pin.OUT)
+    relay = Pin(23, Pin.OUT)
 
 
     if isON:
@@ -40,7 +40,7 @@ def socketConnection():
 
     print("data is type {}".format(type(data)))
 
-    sock.connect(('192.168.1.100', 5011))
+    sock.connect(('192.168.1.101', 5000))
     
     _resp = sock.recv(1024)
     print(_resp)

@@ -11,8 +11,11 @@ def do_connect():
         while not wlan.isconnected():
             pass
     print('network config:', wlan.ifconfig())
-
-def moveMotor(isForward):
+    
+    
+    
+    
+def moveStepper(isForward):
     from machine import Pin
     import time
 
@@ -31,6 +34,7 @@ def moveMotor(isForward):
             pinStep.off()
             time.sleep_ms(10)
     else:
+
         pinDirection.off()
 
         for i in range(0,stepsPerRevolution):
@@ -38,9 +42,36 @@ def moveMotor(isForward):
             time.sleep_ms(10)
             pinStep.off()
             time.sleep_ms(10)    
+
+def moveMotor(isForward):
+    from machine import Pin
+    from time import sleep
+
+    IN1 = Pin(26,Pin.OUT)
+    IN2 = Pin(25,Pin.OUT)
+    IN3 = Pin(33,Pin.OUT)
+    IN4 = Pin(32,Pin.OUT)
+
+    pins = [IN1, IN2, IN3, IN4]
+
+    forwards = [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
+    backwards = [[0,0,0,1],[0,0,1,0],[0,1,0,0],[1,0,0,0]]
+    
+
+    for i in range(15):
+        if isForward:
+            for step in forwards:
+                for i in range(len(pins)):
+                    pins[i].value(step[i])
+                    sleep(0.001)
+        else:
+            for step in backwards:
+                for i in range(len(pins)):
+                    pins[i].value(step[i])
+                    sleep(0.001)
                     
 def socketConnection():
-    data = b'bk'
+    data = b'fr'
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     print("data is type {}".format(type(data)))
@@ -83,3 +114,5 @@ def starWars():
 
 do_connect()
 socketConnection()
+
+
