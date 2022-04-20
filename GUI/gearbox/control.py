@@ -99,8 +99,8 @@ class ControlGui():
 
                 with dpg.group(horizontal=False):
                     dpg.add_text(default_value='Aux Motor')
-                    dpg.add_button(callback=ctr.sendMessage, width=60,height=40,label="Start",user_data="mt_on_fw")
-                    dpg.add_button(callback=ctr.sendMessage, width=60,height=40,label="Start",user_data="mt_on_bk")
+                    dpg.add_button(callback=ctr.sendMessage, width=60,height=40,label="forward",user_data="mt_on_fw")
+                    dpg.add_button(callback=ctr.sendMessage, width=60,height=40,label="backward",user_data="mt_on_bk")
                     dpg.add_button(callback=ctr.sendMessage, width=60,height=40,label="Stop",user_data="mt_off")
 
             with dpg.child_window(tag='Action Responses', width=-1, height=-1,menubar=True):
