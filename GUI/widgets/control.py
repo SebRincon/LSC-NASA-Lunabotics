@@ -28,11 +28,11 @@ class Control():
                 dpg.set_value('connection',"Connected")
 
             except:
-
+                failedConnection += 1
                 messageFeed = dpg.get_value('status')
                 dpg.set_value('status', f"{self.address}:{self.port}\n{messageFeed}")
                 time.sleep(1)
-                pass
+                # pass
 
 
 

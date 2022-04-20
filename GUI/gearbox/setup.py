@@ -11,11 +11,11 @@ class Setup():
             # dpg.add_checkbox(label="Don't ask me next time")
             dpg.add_text("Address")
             with dpg.group(horizontal=True):
-                dpg.add_input_text(default_value="192.168.1.100", uppercase=True, width=-1, tag='serverAddress')
+                dpg.add_input_text(default_value="192.168.1.101", uppercase=True, width=-1, tag='serverAddress')
 
             dpg.add_text("Port")
             with dpg.group(horizontal=True):
-                dpg.add_input_text(default_value="10001", uppercase=True, width=-1, tag='serverPort')
+                dpg.add_input_text(default_value="5000", uppercase=True, width=-1, tag='serverPort')
 
             with dpg.group(horizontal=True):
                 dpg.add_button(label="OK", width=75, callback=ctr.setup)

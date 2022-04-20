@@ -19,19 +19,41 @@ def do_connect():
 
 
 
-def relay(isON):
+def relay(isON, isForward):
 
     # ESP32 GPIO 26
-    relay = Pin(26, Pin.OUT)
+    _r1_1= Pin(13, Pin.OUT) # Negative Secondary
+    _r1_2= Pin(12, Pin.OUT) # Positive Secondary
+    _r2_1= Pin(23, Pin.OUT) # Positive Main
+    _r2_2= Pin(22, Pin.OUT) # Negative Main
+    
+    _r2_1.value(1)
+    _r2_2.value(1)
+    _r1_1.value(1)
+    _r1_2.value(1)
 
 
     if isON:
-      # RELAY ON
-      relay.value(0)
+        if isForward:
+            _r1_1.value(0) #OFF
+            _r1_2.value(0)
+            
+            _r2_1.value(1) #ON
+            _r2_2.value(1)
+        else:
+            _r2_1.value(0) #OFF
+            _r2_2.value(0) 
+            
+            _r1_1.value(1) #ON
+            _r1_2.value(1)
       
     else:
-      # RELAY OFF
-      relay.value(1)
+
+        _r2_1.value(1)
+        _r2_2.value(1)
+        _r1_1.value(1)
+        _r1_2.value(1)
+
 
 
 def socketConnection():
@@ -40,7 +62,7 @@ def socketConnection():
 
     print("data is type {}".format(type(data)))
 
-    sock.connect(('192.168.1.100', 5011))
+    sock.connect(('192.168.1.101', 5000))
     
     _resp = sock.recv(1024)
     print(_resp)
@@ -52,10 +74,12 @@ def socketConnection():
     while True:
         _data = sock.recv(1024)
         print(_data[0:2])
-        if _data == b'mt_on':
-            relay(True)
+        if _data == b'mt_on_fw':
+            relay(True, True)
+        elif _data == b'mt_on_bk':
+            relay(True, False)
         elif _data == b'mt_off':
-            relay(False)
+            relay(False, False)
             
         
         
