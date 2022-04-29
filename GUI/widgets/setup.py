@@ -11,12 +11,12 @@ class Setup():
             # dpg.add_checkbox(label="Don't ask me next time")
             dpg.add_text("Address")
             with dpg.group(horizontal=True):
-                dpg.add_input_text(default_value="10.3.141.1", uppercase=True, width=-1, tag='serverAddress')
+                dpg.add_input_text(default_value="192.168.1.101", uppercase=True, width=-1, tag='serverAddress')
 
             dpg.add_text("Port")
             with dpg.group(horizontal=True):
-                dpg.add_input_text(default_value="10001", uppercase=True, width=-1, tag='serverPort')
+                dpg.add_input_text(default_value="5001", uppercase=True, width=-1, tag='serverPort')
 
             with dpg.group(horizontal=True):
-                dpg.add_button(label="OK", width=75, callback=ctr.setup)
+                dpg.add_button(label="OK", width=75, callback=ctr.simpleSetup)
                 dpg.add_button(label="Cancel", width=75, callback=lambda: dpg.configure_item("modal_id", show=False))
