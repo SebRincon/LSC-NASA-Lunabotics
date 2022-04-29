@@ -4,8 +4,8 @@ import RPi.GPIO as io
 import select
 import time
 from math import cos, sin, pi, floor
-import pygame
-from rplidar import RPLidar, RPLidarException
+
+
 
 
 
@@ -13,12 +13,10 @@ from rplidar import RPLidar, RPLidarException
 class MotorControl():
     def setup(self):
 
-        serverPort = input("Input Port: ")
-        self.HOST = '10.3.141.1'
-        if serverPort == 'n':
-            self.PORT = 10001
-        else: 
-            self.PORT = int(serverPort)
+
+        self.HOST = '192.168.1.101'
+        self.PORT = 5001
+
 
 
         ACK_TEXT = 'text_received'
@@ -44,66 +42,6 @@ class MotorControl():
 
         stop = False
 
-    def startLidar(self):
-        pygame.init()
-        self.lcd = pygame.display.set_mode((320,240))
-        pygame.mouse.set_visible(False)
-        self.lcd.fill((0,0,0))
-        pygame.display.update()
-        PORT_NAME = '/dev/ttyUSB0'
-        self.lidar = RPLidar(PORT_NAME)
-
-    def startLidarStream(self):
-        self.lidarHost = '10.3.141.1'
-        inputPort = input('Choose a Port: ')
-        if inputPort == 'n':
-            self.lidarPort = 20002
-        else:
-            self.lidarPort = int(inputPort)
-
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        print('socket instantiated')
-
-        # bind the socket
-        sock.bind((self.lidarHost, self.lidarPort))
-        print('socket binded')
-
-        # start the socket listening
-        sock.listen()
-        print('socket now listening')
-
-        # accept the socket response from the client, and get the connection object
-        conn, addr = sock.accept()      # Note: execution waits here until the client calls sock.connect()
-        print('socket accepted, got connection object')
-
-        scan_data = [0]*360
-        max_distance = 0 
-        try:
-            for i, scan in enumerate(self.lidar.iter_scans()):
-                for (_, angle, distance) in scan:
-                    scan_data[min([359, floor(angle)])] = distance
-
-                self.lcd.fill((0,0,0))
-                for angle in range(360):
-                    distance = scan_data[angle]
-
-                    if distance > 0:                  # ignore initially ungathered data points
-                        max_distance = max([min([5000, distance]), max_distance])
-                        radians = angle * pi / 180.0
-                        x = distance * cos(radians)
-                        y = distance * sin(radians)
-                        point = (160 + int(x / max_distance * 119), 120 + int(y / max_distance * 119))
-                        message= (f"{point[0]} - {point[1]} ")
-                        conn.sendall(message.encode())
-                        
-                        feedback = conn.recv(1024)
-
-                        self.lcd.set_at(point, pygame.Color(255, 255, 255))
-                pygame.display.update()
-        except RPLidarException:
-            self.lidar.stop()
-            self.lidar.disconnect()
-
 
     def setVelocity(self,dutycycle):
         print(dutycycle)
@@ -116,9 +54,9 @@ class MotorControl():
 
     def setDirection(self, genDirection:str):
         directions = {
-            'f': [4,24,4,24],
-            'b': [24, 4, 24, 4],
-            's': [0,0,0,0],
+            'F': [4,4,4,24],
+            'B': [24, 24, 24, 4],
+            'S': [0,0,0,0],
             'fl': [0,0,0,0],
             'fr': [0,0,0,0],
             'br': [0,0,0,0],
