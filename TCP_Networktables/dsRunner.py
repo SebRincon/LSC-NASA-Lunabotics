@@ -102,5 +102,5 @@ if __name__ == '__main__':
     runner.setup()
 
     # Reverse the commenting for these two to change control type
-    runner.keyboardTest()
-    # runner.startInput()
+    # runner.keyboardTest()
+    runner.startInput()

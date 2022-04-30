@@ -4,6 +4,7 @@ import threading
 from networktables import NetworkTables
 import socket
 import json
+import time
 
 
 class MotorControl():
@@ -16,6 +17,7 @@ class MotorControl():
         NetworkTables.initialize(server='169.254.69.69')
         NetworkTables.addConnectionListener(self.connectionListener, immediateNotify=True)
         self.smart_dashboard = NetworkTables.getTable('SmartDashboard')
+        self.datatable = NetworkTables.getTable('datatable')
 
         # wait for connection 
         with self.cond:
@@ -49,7 +51,7 @@ class MotorControl():
     def startSocketServer(self):
         # Set IP and Port for server
         self.HOST = '192.168.1.102'
-        self.PORT = 5001
+        self.PORT = 5000
 
         # instantiate a socket object
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -84,16 +86,23 @@ class MotorControl():
 
             # load data into json string
             data = json.loads(encodedMessage.decode('utf-8'))
+            
 
             # pass data string to network table 
-            self.motorTable.putString('data', data)
+            self.datatable.putNumber('RightStickValue', 1)
+            self.datatable.putNumber('LeftStickValue',  data['LeftStickYValue'])
+
 
             # fetch string from network table
-            _response  = self.motorTable.getString('data')
+            _rep_right = self.datatable.getNumber('RightStickValue', 0)
+            _rep_left = self.datatable.getNumber('LeftStickValue', 0)
+            
+            _response = f'{_rep_right} : {_rep_left}'
 
             # Print result 
             _response = _response + '__success'
             conn.send(_response.encode('utf-8'))
+            time.sleep(1)
 
 
 
@@ -107,3 +116,5 @@ def listener():
 
 if __name__ == '__main__':
     listener()
+
+
