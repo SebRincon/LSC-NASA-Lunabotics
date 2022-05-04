@@ -4,48 +4,49 @@
 <xacro:property name="body_color" value="Gazebo/Silver" />
 
 <gazebo>
-  <plugin name="control" filename="libgazebo_ros_control.so"/>
+  <plugin filename="libgazebo_ros_control.so" name="control"/>
 </gazebo>
 <gazebo reference="base_link">
   <material>${body_color}</material>
-  <mu1>0.2</mu1>
+  <mu1>0.2</mu1> 
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
   <gravity>true</gravity>
 </gazebo>
 
-<gazebo reference="wheel3_1">
-  <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
-  <selfCollide>true</selfCollide>
-</gazebo>
-
-<gazebo reference="wheel2_1">
-  <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
-  <selfCollide>true</selfCollide>
-</gazebo>
-
 <gazebo reference="wheel1_1">
   <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <kp>1000000.0</kp> <!-- kp and kd for rubber -->
+  <kd>100.0</kd>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
 <gazebo reference="wheel4_1">
   <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <kp>1000000.0</kp> <!-- kp and kd for rubber -->
+  <kd>100.0</kd>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="dump_1">
+<gazebo reference="wheel3_1">
   <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <kp>1000000.0</kp> <!-- kp and kd for rubber -->
+  <kd>100.0</kd>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="wheel2_1">
+  <material>${body_color}</material>
+  <kp>1000000.0</kp> <!-- kp and kd for rubber -->
+  <kd>100.0</kd>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
@@ -97,10 +98,10 @@
       <plugin name='skid_steer_drive' filename='libgazebo_ros_skid_steer_drive.so'>
         <updateRate>500</updateRate>
 
-        <leftFrontJoint>Rev14</leftFrontJoint>
-        <rightFrontJoint>Rev15</rightFrontJoint>
-        <leftRearJoint>Rev13</leftRearJoint>
-        <rightRearJoint>Rev16</rightRearJoint>
+        <leftFrontJoint>Rev9</leftFrontJoint>
+        <rightFrontJoint>Rev6</rightFrontJoint>
+        <leftRearJoint>Rev8</leftRearJoint>
+        <rightRearJoint>Rev7</rightRearJoint>
 
         <wheelSeparation>1.25</wheelSeparation>
         <wheelDiameter>0.3</wheelDiameter>

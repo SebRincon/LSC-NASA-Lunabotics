@@ -5,19 +5,23 @@ Sim_controller:
     publish_rate: 50
 
   # Position Controllers --------------------------------------
-  Rev6_position_controller:
+  Rev13_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Rev6
+    joint: Rev13
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Rev7_position_controller:
+  Rev14_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Rev7
+    joint: Rev14
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Rev8_position_controller:
+  Rev15_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Rev8
+    joint: Rev15
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Rev9_position_controller:
+  Rev16_position_controller:
     type: effort_controllers/JointPositionController
-    joint: Rev9
+    joint: Rev16
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  Rev17_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev17
     pid: {p: 100.0, i: 0.01, d: 10.0}

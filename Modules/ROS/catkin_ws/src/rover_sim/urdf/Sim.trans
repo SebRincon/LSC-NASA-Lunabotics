@@ -1,45 +1,56 @@
 <?xml version="1.0" ?>
 <robot name="Sim" xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
-<transmission name="Rev6_tran">
+<transmission name="Rev13_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="Rev6">
+  <joint name="Rev13">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="Rev6_actr">
+  <actuator name="Rev13_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="Rev7_tran">
+<transmission name="Rev14_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="Rev7">
+  <joint name="Rev14">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="Rev7_actr">
+  <actuator name="Rev14_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="Rev8_tran">
+<transmission name="Rev15_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="Rev8">
+  <joint name="Rev15">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="Rev8_actr">
+  <actuator name="Rev15_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="Rev9_tran">
+<transmission name="Rev16_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="Rev9">
+  <joint name="Rev16">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="Rev9_actr">
+  <actuator name="Rev16_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="Rev17_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Rev17">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Rev17_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>

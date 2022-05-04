@@ -1,0 +1,9 @@
+<launch>
+
+<rosparam file="$(find rover_sim)/launch/controller.yaml" command="load"/>
+<node args="Rev6_position_controller Rev7_position_controller Rev8_position_controller Rev9_position_controller joint_state_controller " name="controller_spawner" ns="Sim" output="screen" pkg="controller_manager" respawn="false" type="spawner"/>
+<node name="robot_state_publisher" output="screen" pkg="robot_state_publisher" respawn="false" type="robot_state_publisher">
+  <remap from="/joint_states" to="/Sim/joint_states"/>
+</node>
+
+</launch>
