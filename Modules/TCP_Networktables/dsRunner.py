@@ -9,7 +9,7 @@ class dsRunner():
         # Connect to server
         self.ClientSocket = socket.socket()
         address = '192.168.1.102'
-        port = 5001
+        port = 5000
         connectionSuccessful = False
 
         print('Waiting for connection')
@@ -21,9 +21,10 @@ class dsRunner():
             print(str(e))
 
         # ! Test if this is needed 
+        # self.ClientSocket.send(str.encode("TEST"))
         # Expect test message
-        _response = self.ClientSocket.recv(1024)
-        print(_response.decode('utf-8'))
+        #_response = self.ClientSocket.recv(1024)
+        #print(_response.decode('utf-8'))
         # ! ---------------------------------->
 
         while  not connectionSuccessful:
@@ -106,5 +107,5 @@ if __name__ == '__main__':
     runner.setup()
 
     # Reverse the commenting for these two to change control type
-    # runner.keyboardTest()
-    runner.startInput()
+    runner.keyboardTest()
+    # runner.startInput()
