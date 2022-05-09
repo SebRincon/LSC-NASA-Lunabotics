@@ -25,3 +25,9 @@ Pipfile.lock
 robotpyTest/test.py
 venv/
 GUI/gearbox/__pycache__/setup.cpython-39.pyc
+Modules/ROS/catkin_ws/devel/
+Modules/ROS/catkin_ws/logs/
+Modules/ROS/catkin_ws/build/
+Modules/ROS/catkin_ws/.catkin_tools/
+Modules/ROS/catkin_ws/frames.pdf
+Modules/ROS/catkin_ws/frames.gv

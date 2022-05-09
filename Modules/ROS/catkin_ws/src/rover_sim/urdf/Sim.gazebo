@@ -108,9 +108,9 @@
         <torque>20</torque>
 
         <commandTopic>cmd_vel</commandTopic>
-        <odometryTopic>odom_demo</odometryTopic>
-        <odometryFrame>odom_demo</odometryFrame>
-        <broadcastTF>true</broadcastTF>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <broadcastTF>false</broadcastTF>
       </plugin>
 </gazebo>
 
