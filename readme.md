@@ -1,5 +1,36 @@
 # 2022 Cyfair Lunabotics
 
+                                                                         
+                                                                         
+                                                        
+                                                                         
+                                                                         
+                                                                         
+       ┌─Driver Station────┐                         ┌ ROVER ───────────┐
+       │               ┌───┴─────────┐        TCP    │    ┌─────────┐   │
+       │               │ Controller  │◀─────Socket───┼───▶│  RPI4   │   │
+       │               └───┬─────────┘      │        │    └────▲────┘   │
+       │               ┌───┴──┐             │        │         ┃        │
+       │               │ GUI  │◀────────────┘        │         ┃        │
+       │               └───┬──┘                      │         ┃        │
+       └───────────────────┘                         │   NetworkTables  │
+                                                     │         ┃        │
+                                                     │         ┃        │
+                                                     │         ┃        │
+                                                     │ ┌───────▼───────┐│
+                                                     │ │    RoboRIO    ││
+                                                     │ └───────────────┘│
+                                                     │         │        │
+                                                     │         │        │
+                                                     │         ▼        │
+                                                     │ ┌───────────────┐│
+                                                     │ │    Motors     ││
+                                                     │ └───────────────┘│
+                                                     └──────────────────┘
+                                                     
+                                                     
+
+
 ## [ROS](https://www.github.com)
 ROS is being used as the main automation control point, using an `RPLidar A1` paired with the `HECTOR-SLAM` algorithm for localization and path planning.
 
