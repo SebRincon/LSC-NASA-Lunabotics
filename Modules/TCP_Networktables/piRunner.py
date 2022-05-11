@@ -89,7 +89,7 @@ class MotorControl():
             
 
             # pass data string to network table 
-            self.datatable.putNumber('RightStickValue', 1)
+            self.datatable.putNumber('RightStickValue', data['RightStickXValue'])
             self.datatable.putNumber('LeftStickValue',  data['LeftStickYValue'])
 
 
