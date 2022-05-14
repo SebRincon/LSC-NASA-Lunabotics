@@ -2,7 +2,6 @@
 
 import threading
 from networktables import NetworkTables
-import socket
 import json
 import time
 
