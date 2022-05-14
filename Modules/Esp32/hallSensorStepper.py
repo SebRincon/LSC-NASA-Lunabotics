@@ -2,7 +2,7 @@ import os
 import network
 import socket
 import eps32
-
+# Connect to the router function
 def do_connect():
     wlan = network.WLAN(network.STA_IF)
     wlan.active(True)
@@ -12,6 +12,38 @@ def do_connect():
         while not wlan.isconnected():
             pass
     print('network config:', wlan.ifconfig())
+    
+ # Connect to the socket server function
+def socketConnection():
+    data = b'fr'
+    # Connection creation on 
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    print("data is type {}".format(type(data))) 
+    # specified address and port
+    sock.connect(('192.168.1.101', 5000))
+    
+    # Wait to receive a message
+    _resp = sock.recv(1024)
+    print(_resp)
+    
+    # Respond with a test message
+    sock.send(data)
+    _resp = sock.recv(1024)
+    print(_resp)
+    
+    # Loop & wait for messages, then move the motors accordingly 
+    while True:
+        _data = sock.recv(1024)
+        print(_data[0:2])
+        if _data == b'fr_bk':
+            print('Moving Motor')
+            moveMotor(False)
+        elif _data == b'fr_fw':
+            moveMotor(True)
+    sock.close()
+    
+
+
 
 def moveMotor(isForward):
     from machine import Pin
@@ -54,31 +86,6 @@ def moveMotor(isForward):
             time.sleep_ms(500)
 
                     
-def socketConnection():
-    data = b'fr'
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-    print("data is type {}".format(type(data)))
-
-    sock.connect(('192.168.1.101', 5000))
-    
-    _resp = sock.recv(1024)
-    print(_resp)
-
-    sock.send(data)
-    _resp = sock.recv(1024)
-    print(_resp)
-    
-    while True:
-        _data = sock.recv(1024)
-        print(_data[0:2])
-        if _data == b'fr_bk':
-            print('Moving Motor')
-            moveMotor(False)
-        elif _data == b'fr_fw':
-            moveMotor(True)
-    sock.close()
-    
 
 do_connect()
 socketConnection()
