@@ -22,9 +22,7 @@ def do_connect():
 def relay(isON, isForward):
 
     # ESP32 GPIO 26
-<<<<<<< HEAD
     relay = Pin(23, Pin.OUT)
-=======
     _r1_1= Pin(13, Pin.OUT) # Negative Secondary
     _r1_2= Pin(12, Pin.OUT) # Positive Secondary
     _r2_1= Pin(23, Pin.OUT) # Positive Main
@@ -34,7 +32,6 @@ def relay(isON, isForward):
     _r2_2.value(1)
     _r1_1.value(1)
     _r1_2.value(1)
->>>>>>> f19abd61f0b427f6863606cf705e740b6f19e1ca
 
 
     if isON:
