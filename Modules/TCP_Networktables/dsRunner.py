@@ -79,7 +79,7 @@ class dsRunner():
             _data['FrontGearBox']  = [a_button_value, y_button_value] # 0
             _data['BackGearBox']  = dpad_value[1] # (0,0)
 
-
+            print(_data)
 
             data = json.dumps(_data)
             self.ClientSocket.send(str.encode(data))
@@ -89,8 +89,8 @@ class dsRunner():
 
             # print(self.ClientSocket.recv(1024).decode('utf-8'))
 
-            print("Left Analog Stick: {}\t Right Analog Stick: {}".format(xboxcontroller.get_axis(1),  # left stick y axis
-                                                                xboxcontroller.get_axis(4)))  # right stick x axis
+            # print("Left Analog Stick: {}\t Right Analog Stick: {}".format(xboxcontroller.get_axis(1),  # left stick y axis
+            #                                                     xboxcontroller.get_axis(4)))  # right stick x axis
     
     
     def keyboardTest(self):

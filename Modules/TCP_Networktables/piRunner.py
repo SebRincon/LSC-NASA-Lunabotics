@@ -152,24 +152,27 @@ class MotorControl():
             # load data into json string
             data = json.loads(encodedMessage.decode('utf-8'))
             
+            # _frontGearbox = f'{data["FrontGearBox"]}'
+            _backGearbox = f'{data["BackGearBox"]}'
 
             # pass data string to network table 
             self.datatable.putNumber('RightStickValue', data['RightStickXValue'])
             self.datatable.putNumber('LeftStickValue',  data['LeftStickYValue'])
-            self.datatable.putNumber('FrontGearBox',  data['FrontGearBox'])
-            self.datatable.putNumber('BackGearBox',  data['BackGearBox'])
+            self.datatable.putNumberArray('FrontGearBox', data["FrontGearBox"] )
+            self.datatable.putNumber('BackGearBox',  data["BackGearBox"])
 
             # fetch string from network table
             _rep_right = self.datatable.getNumber('RightStickValue', 0)
             _rep_left = self.datatable.getNumber('LeftStickValue', 0)
 
-            _FrontGearBox = self.datatable.getNumber('FrontGearBox',  0)
-            _BacktGearBox = self.datatable.getNumber('BackGearBox',  0)
+            _FrontGearBox = self.datatable.putNumberArray('FrontGearBox', [0,0])
+            _BacktGearBox = self.datatable.putNumber('BackGearBox',  0)
 
             _response = f'Joystick Values: {_rep_right} : {_rep_left}\nGearboxes: {_FrontGearBox} : {_BacktGearBox}'
             
             # Print result 
             _response = _response + '\n__success'
+            print(_response)
             conn.send(_response.encode('utf-8'))
             time.sleep(.2)
 
@@ -183,5 +186,3 @@ def listener():
 
 if __name__ == '__main__':
     listener()
-
-
