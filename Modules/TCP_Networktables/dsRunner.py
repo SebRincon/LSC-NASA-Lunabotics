@@ -44,7 +44,13 @@ class dsRunner():
         #waiting for user to plug in controller
         #connecting to controller and initialize
 
-        xboxcontroller = pygame.joystick.Joystick(0)
+        pygame.joystick.init()
+        joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
+
+        print(joysticks)
+        stickvalue = input('Enter Joystick value: ')
+
+        xboxcontroller = pygame.joystick.Joystick(int(stickvalue))
         xboxcontroller.init()
 
         #starting loop to obtain x and y controller analog values
@@ -116,5 +122,5 @@ if __name__ == '__main__':
     runner.setup()
 
     # Reverse the commenting for these two to change control type
-    runner.keyboardTest()
-    # runner.startInput()
+    # runner.keyboardTest()
+    runner.startInput()

@@ -38,7 +38,7 @@ def moveMotor(isForward):
             pinStep.on()
             time.sleep_ms(10)
             pinStep.off()
-            time.sleep_ms(10)    
+            time.sleep_ms(10)   
                     
 def socketConnection():
     data = b'fr'
