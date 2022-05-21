@@ -1,7 +1,7 @@
 import os 
 import network
 import socket
-import eps32
+import esp32
 # Connect to the router function
 def do_connect():
     wlan = network.WLAN(network.STA_IF)
@@ -12,7 +12,6 @@ def do_connect():
         while not wlan.isconnected():
             pass
     print('network config:', wlan.ifconfig())
-    
  # Connect to the socket server function
 def socketConnection():
     data = b'fr'
@@ -20,14 +19,13 @@ def socketConnection():
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     print("data is type {}".format(type(data))) 
     # specified address and port
-    sock.connect(('192.168.1.101', 5000))
+    sock.connect(('192.168.1.101', 5001))
     
     # Wait to receive a message
-    _resp = sock.recv(1024)
-    print(_resp)
     
     # Respond with a test message
     sock.send(data)
+
     _resp = sock.recv(1024)
     print(_resp)
     
@@ -41,14 +39,11 @@ def socketConnection():
         elif _data == b'fr_fw':
             moveMotor(True)
     sock.close()
-    
-
-
 
 def moveMotor(isForward):
     from machine import Pin
     import time
-    import esp32
+
 
     pinEnabled = Pin(23, Pin.OUT,value=0)
     pinStep = Pin(22, Pin.OUT)
@@ -84,8 +79,6 @@ def moveMotor(isForward):
             value = esp32.hall_sensor()
             print(value)
             time.sleep_ms(500)
-
-                    
 
 do_connect()
 socketConnection()

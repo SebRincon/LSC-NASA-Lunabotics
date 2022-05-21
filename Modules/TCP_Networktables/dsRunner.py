@@ -1,4 +1,4 @@
-from cgitb import reset
+
 import socket
 import pygame
 import json
@@ -60,13 +60,22 @@ class dsRunner():
             left_analog_y_value = float(format(xboxcontroller.get_axis(1)))
             right_analog_x_value = float(format(xboxcontroller.get_axis(4)))
 
+            a_button_value = float(format(xboxcontroller.get_button(0)))
+            y_button_value = float(format(xboxcontroller.get_button(3)))
+            dpad_value = xboxcontroller.get_hat(0)
+
+
+
             #uploading x and y analog values to network table
             _data = {}
             _data['RightStickXValue'] = right_analog_x_value
             _data['LeftStickYValue']  = left_analog_y_value
+            _data['FrontGearBox']  = [a_button_value, y_button_value] # 0
+            _data['BackGearBox']  = dpad_value[1] # (0,0)
 
 
-            data = data = json.dumps(_data)
+
+            data = json.dumps(_data)
             self.ClientSocket.send(str.encode(data))
 
             response = self.ClientSocket.recv(1024) 
