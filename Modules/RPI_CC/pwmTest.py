@@ -1,9 +1,9 @@
 import RPi.GPIO as io
 
 io.setmode(io.BOARD) # GPIO Settings
-io.setup(12,io.OUT) # Use pin 12 as signal -> white cable to pin 12
+io.setup(33,io.OUT) # Use pin 12 as signal -> white cable to pin 12
 
-pwmController = io.PWM(12,100) # Setting pin 12 as PWM pin and frequency to 100
+pwmController = io.PWM(33,100) # Setting pin 12 as PWM pin and frequency to 100
 pwmController.start(20) # Start motor at 20
 
 stop = False # Stop Variable 

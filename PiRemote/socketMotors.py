@@ -5,11 +5,19 @@ import select
 import time
 from math import cos, sin, pi, floor
 
+
+
+
 class MotorControl():
     def setup(self):
 
-        self.HOST = '192.168.1.103'
-        self.PORT = 5000
+        serverPort = input("Input Port: ")
+        self.HOST = '192.168.1.100'
+        if serverPort == 'n':
+            self.PORT = 10001
+        else: 
+            self.PORT = int(serverPort)
+
 
         ACK_TEXT = 'text_received'
 
@@ -34,28 +42,34 @@ class MotorControl():
 
         stop = False
 
+    def setVelocity(self,dutycycle):
+        print(dutycycle)
+        self.direction = dutycycle
 
-    def setVelocity(self, velCommand ):
-    
-        self.frontRightMotor.ChangeDutyCycle(velCommand[0])
-        self.fronLeftMotor.ChangeDutyCycle(velCommand[1])
-        self.backRightMotor.ChangeDutyCycle(velCommand[2])
-        self.backLeftMotor.ChangeDutyCycle(velCommand[3])
+        self.frontRightMotor.ChangeDutyCycle(int(self.direction))
+        self.fronLeftMotor.ChangeDutyCycle(int(self.direction))
+        self.backRightMotor.ChangeDutyCycle(int(self.direction))
+        self.backLeftMotor.ChangeDutyCycle(int(self.direction))
 
     def setDirection(self, genDirection:str):
         directions = {
-            # fr_right - fr_left - bk_right - bk_left 
-            'forward': [4,24,4,24],
-            'backward': [24, 4, 24, 4],
-            'stop': [0,0,0,0],
-            'fr_left': [4,4,4,4],
-            'fr_right': [24,24,24,24],
-            'bk_left': [24,24,24,24],
-            'bk_left': [4,4,4,4],
-
+            'f': [4,24,4,24],
+            'b': [24, 4, 24, 4],
+            's': [0,0,0,0],
+            'fl': [0,0,0,0],
+            'fr': [0,0,0,0],
+            'br': [0,0,0,0],
+            'bl': [0,0,0,0],
+            'r': [0,0,0,0],
+            'l': [0,0,0,0],
             }
 
-        self.setVelocity(directions[genDirection])
+        
+        self.frontRightMotor.ChangeDutyCycle(directions[genDirection][0])
+        self.fronLeftMotor.ChangeDutyCycle(directions[genDirection][1])
+        self.backRightMotor.ChangeDutyCycle(directions[genDirection][2])
+        self.backLeftMotor.ChangeDutyCycle(directions[genDirection][3])
+
 
     def sendTextViaSocket(self, message, sock):
         # encode the text message
