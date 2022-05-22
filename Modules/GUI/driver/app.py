@@ -4,7 +4,7 @@ from control import Control, ControlGui
 
 import socket
 import select
-import time
+import time 
 import array
 
 # Context Boilerplate
@@ -29,7 +29,7 @@ with dpg.window(tag="Primary Window", width=-1, height=-1):
 
 
 #Boilerplate GUI setup: Window size - Title
-dpg.create_viewport(title='RIMOR', width=300, height=500)
+dpg.create_viewport(title='DRIVER', width=300, height=500)
 dpg.setup_dearpygui()
 dpg.set_primary_window("Primary Window", True)
 dpg.show_viewport()

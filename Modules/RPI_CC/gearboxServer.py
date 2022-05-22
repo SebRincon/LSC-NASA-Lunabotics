@@ -16,7 +16,7 @@ print_lock = threading.Lock()
 
 class GearboxController():
     def setup(self):
-        self.HOST = '192.168.1.103'
+        self.HOST = '192.168.1.101'
         self.PORT = 5001
         stop = False
     

@@ -8,7 +8,7 @@ from math import cos, sin, pi, floor
 class MotorControl():
     def setup(self):
 
-        self.HOST = '192.168.1.103'
+        self.HOST = '192.168.1.101'
         self.PORT = 5000
 
         ACK_TEXT = 'text_received'

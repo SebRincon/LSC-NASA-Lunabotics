@@ -87,20 +87,20 @@ class ControlGui():
             with dpg.group(horizontal=True):
                 with dpg.group(horizontal=False):
                     
-                    dpg.add_button(callback=ctr.sendMessage, width=60,height=40,label="Front Left",user_data="fr_left")
-                    dpg.add_button(callback=ctr.sendMessage, width=60,height=40,label="Stop",user_data="stop")
-                    dpg.add_button(callback=ctr.sendMessage, width=60,height=40,label="Back Left",user_data="bk_left")
+                    dpg.add_button(callback=ctr.sendMessage, width=80,height=40,label="Front Left",user_data="fr_left")
+                    dpg.add_button(callback=ctr.sendMessage, width=80,height=40,label="Stop",user_data="stop")
+                    dpg.add_button(callback=ctr.sendMessage, width=80,height=40,label="Back Left",user_data="bk_left")
 
                 with dpg.group(horizontal=False):
-                    dpg.add_text(default_value='DRIVER')
-                    dpg.add_button(callback=ctr.sendMessage, width=60,height=40,label="Forward",user_data="forward")
-                    dpg.add_button(callback=ctr.sendMessage, width=60,height=40,label="Stop",user_data="stop")
-                    dpg.add_button(callback=ctr.sendMessage, width=60,height=40,label="Back",user_data="backward")
+
+                    dpg.add_button(callback=ctr.sendMessage, width=80,height=40,label="Forward",user_data="forward")
+                    dpg.add_button(callback=ctr.sendMessage, width=80,height=40,label="Stop",user_data="stop")
+                    dpg.add_button(callback=ctr.sendMessage, width=80,height=40,label="Back",user_data="backward")
 
                 with dpg.group(horizontal=False):
-                    dpg.add_button(callback=ctr.sendMessage, width=60,height=40,label="Front Right",user_data="fr_right")
-                    dpg.add_button(callback=ctr.sendMessage, width=60,height=40,label="Stop",user_data="stop")
-                    dpg.add_button(callback=ctr.sendMessage, width=60,height=40,label="Front Back",user_data="fr_back")
+                    dpg.add_button(callback=ctr.sendMessage, width=80,height=40,label="Front Right",user_data="fr_right")
+                    dpg.add_button(callback=ctr.sendMessage, width=80,height=40,label="Stop",user_data="stop")
+                    dpg.add_button(callback=ctr.sendMessage, width=80,height=40,label="Front Back",user_data="fr_back")
 
             with dpg.child_window(tag='Action Responses', width=-1, height=-1,menubar=True):
                 with dpg.menu_bar():

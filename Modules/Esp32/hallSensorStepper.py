@@ -1,7 +1,7 @@
 import os 
 import network
 import socket
-import eps32
+import esp32
 import json
 
 def do_connect():
@@ -17,7 +17,7 @@ def do_connect():
 def moveMotor(isForward):
     from machine import Pin
     import time
-    import esp32
+
 
     pinEnabled = Pin(23, Pin.OUT,value=0)
     pinStep = Pin(22, Pin.OUT)
@@ -57,6 +57,7 @@ def moveMotor(isForward):
                     
 def socketConnection():
     data = b'fr'
+    # data = b'bk'
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     print("data is type {}".format(type(data)))
@@ -68,17 +69,29 @@ def socketConnection():
 
     sock.send(data)
     _resp = sock.recv(1024)
+
     print(_resp)
     
     while True:
         data = sock.recv(1024)
-        _data = json.loads(data)
+        _data = data.decode('utf-8')
         print(data)
-        if _data == [1,0]:
+        if _data == b'fr_fw':
             print('Moving Motor')
-            moveMotor(False)
-        elif _data == [0,1]:
             moveMotor(True)
+        elif _data == b'fr_bk':
+            moveMotor(False)
+            
+    # while True:
+    #     data = sock.recv(1024)
+    #     _data = data.decode('utf-8')
+    #     print(data)
+    #     if _data == b'bk_fw':
+    #         print('Moving Motor')
+    #         moveMotor(True)
+    #     elif _data == b'bk_bk':
+    #         moveMotor(False)
+
     sock.close()
     
 

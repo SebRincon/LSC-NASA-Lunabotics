@@ -58,7 +58,7 @@ class MotorControl():
     # Start socketServer
     def startSocketServer(self):
         # Set IP and Port for server
-        self.HOST = '192.168.1.102'
+        self.HOST = '192.168.1.101'
         self.PORT = 5001
 
         # instantiate a socket object
