@@ -31,3 +31,8 @@ Modules/ROS/catkin_ws/build/
 Modules/ROS/catkin_ws/.catkin_tools/
 Modules/ROS/catkin_ws/frames.pdf
 Modules/ROS/catkin_ws/frames.gv
+Modules/RoboRIO/Python/simgui.json
+Modules/RoboRIO/Python/simgui-ds.json
+Modules/RoboRIO/Python/simgui-window.json
+.installer_config
+Modules/RoboRIO/Python/src/.deploy_cfg
