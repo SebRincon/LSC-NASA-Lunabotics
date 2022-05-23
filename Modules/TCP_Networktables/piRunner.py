@@ -63,7 +63,7 @@ class MotorControl():
         self.notified = [False]
         
         # NetworkTables.initialize(server='10.xx.xx.2')
-        NetworkTables.initialize(server='169.254.69.69')
+        NetworkTables.initialize(server='169.254.55.184')
         NetworkTables.addConnectionListener(self.connectionListener, immediateNotify=True)
         self.smart_dashboard = NetworkTables.getTable('SmartDashboard')
         self.datatable = NetworkTables.getTable('datatable')

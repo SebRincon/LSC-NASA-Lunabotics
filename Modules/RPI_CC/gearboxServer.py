@@ -26,19 +26,39 @@ class GearboxController():
         log = open('log.txt','a')
         log.write(f'Client Added: {data.decode()}')
         _decoded = data.decode('utf-8')
+        connection.send(data)
 
         if  _decoded == 'GUI':
+            print('GUI CONNECTED')
             while True:
+                time.sleep(.5)
                 data = connection.recv(2048)
                 f = open('command.txt', 'w')
                 f.write(data.decode('utf-8'))
+                print(data.decode('utf-8'))
+                f.close()
 
-        else: 
+        elif _decoded == 'fr': 
+            print('Front Motor CONNECTED')
             while True:
                 try: 
+                    time.sleep(.5)
                     f = open('command.txt', 'r')
                     reply = f.read()
                     connection.sendall(str.encode(reply))
+                    f.close()
+                except:
+                    pass
+
+        elif _decoded == 'bk': 
+            print('Back Motor CONNECTED')
+            while True:
+                try: 
+                    time.sleep(.5)
+                    f = open('command.txt', 'r')
+                    reply = f.read()
+                    connection.sendall(str.encode(reply))
+                    f.close()
                 except:
                     pass
 
