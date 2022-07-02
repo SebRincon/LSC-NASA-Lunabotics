@@ -38,3 +38,6 @@ Modules/RoboRIO/Python/simgui-window.json
 Modules/RoboRIO/Python/src/.deploy_cfg
 FinalRun/Driver PC/gearbox/__pycache__/control.cpython-39.pyc
 FinalRun/Driver PC/gearbox/__pycache__/setup.cpython-39.pyc
+_CC_TODO.textClient
+_FinalRun/
+_PiRemote

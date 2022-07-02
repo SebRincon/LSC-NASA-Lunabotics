@@ -1,5 +1,14 @@
-# 2022 Cyfair Lunabotics
+# **2022 Cyfair Lunabotics** 
+This is Lonestar-Cyfair's 2022 NASA Lunabotics Competition repo, here all of our source code and protocols have been organized and documented for future teams reference.
 
+
+<img src="src/lsc%20college.png" width="128"/>
+<img src="src/cropped.png" width="150"/>
+
+
+
+
+____
 ## Rover Control & Automation
 
 #### [CONTROL METHOD]()
@@ -72,6 +81,7 @@ We are using the ESP32 microcontroller board running microPython as the motor co
 - [SLAM]()
 - [DepthAI]()
 
+<img src="relative/path/in/repository/to/image.svg" width="128"/>
 # FRC-ROS
 
 This is the source code for using ROS with an FRC Robot. The steps for installing and running ROS applications are identical for desktop PC's, laptops, Raspberry PI, NVidia Jetson.

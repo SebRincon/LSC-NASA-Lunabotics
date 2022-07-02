@@ -1,9 +1,0 @@
-imu control & coordinate - python & depthai
-esp32 & Hall effect sensor - micropython or C++
-oak d framework - python & depthai framework & opencv
-wplibrary setup - java & wplibrary
-raspberrypi setup - python & java & wpilibrary
-
-Dearpygui - GUI
-rplidar - Lidar Driver
-Depthai - Camera Backend
